@@ -37,6 +37,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova" onload="pg=true;"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/taggle/1.11.1/taggle.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
        $('#status').prepend('document ready<br>');
@@ -67,6 +68,9 @@
         comment:'',
         id:''
       };
+      
+      
+      
       var down = false;
       
       function init(){
@@ -126,17 +130,21 @@
       }
       
       function displayfacts(){
+        $('#comments').html('')
       var fac = db.facts;
-        var html = '';
+
         for (var t in fac){
+          var html = '';
           var selector = '';
           for (var g in fac[t]['segments']){
           selector+='#'+g+' ,'
           }
           selector=selector.slice(0,-2);console.log(selector);
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" >'+fac[t].comment+'</div>';
+          $('#comments').append(html);
+          new Taggle('fact'+g);
         }
-        $('#comments').html(html)
+        
       }
 
       </script> 
