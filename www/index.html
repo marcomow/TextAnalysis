@@ -59,6 +59,7 @@
         settings:{},
         facts:{}
       }
+      db.onchange = function(a){console.log(db)}
       
       var factnum = 0;
       
@@ -110,7 +111,6 @@
       factnum++;
         thissel={}
         $('.hl').removeClass('hl');
-        console.log(db);
       }
 
       </script> 
