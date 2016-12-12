@@ -76,9 +76,14 @@
       
       function init(){
          tribute = new Tribute({
-  values: [
-    {key: 'Phil Heartman', value: 'pheartman'},
-    {key: 'Gordon Ramsey', value: 'gramsey'}
+  collection: [{
+    trigger: '@',
+  noMatchTemplate: null,
+  fillAttr: 'value',
+  values: [],
+  requireLeadingSpace: false,
+  allowSpaces: true
+}
   ]
 });  
         
