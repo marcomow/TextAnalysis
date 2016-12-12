@@ -80,15 +80,7 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
 
       function init(){
             var hltr = new TextHighlighter( document.getElementById('text'), {
-                onBeforeHighlight: function (range) {
-                 return  range
-                },
-                onAfterHighlight: function (range, highlights) {
-                 return highlights
-                },
-                onRemoveHighlight: function (hl) {
-                 return hl
-                }
+              color:'red'
             });
       
       }
