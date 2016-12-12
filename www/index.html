@@ -15,20 +15,7 @@
   </head>
   <body class="white">
     <div class="container">
-        <a class="btn green waves-effect hide" id="scan" onclick="blenable();"><i class="material-icons left">bluetooth_searching</i>scan</a>
-        <div id="devices"></div>
       <div id="status"></div>
-    </div>
-    
-    <div id="tempdevice" class="hide">
-      <div class="card" id="NAME">
-        <div class="card-title">NAME</div>
-        <div class="card-content">
-          <i>ID</i>
-          <a class="btn blue waves-effect" id="connectbutNAME" onclick="$(this).addClass('disabled');connect('ID','NAME');"><i class="material-icons">bluetooth</i></a>
-          <div id="servicesNAME">serivcesNAME</div>
-        </div>
-      </div>
     </div>
     
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -38,64 +25,19 @@
     <script type="text/javascript">
       $(document).ready(function(){
        $('#status').prepend('document ready<br>');
-      document.addEventListener('deviceready', onDeviceReady);
+       $(document).on('deviceready', onDeviceReady, notpg);
       });
       
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
-        blenable();
       } 
-    function scan(){
-      $('#devices').html('');
-    ble.scan([], 30, listdevices, failed)
-    }
-    
-      function listdevices(device){
-          var html = $('#tempdevice').html()
-          .replace(/ID/g,device.id)
-          .replace(/NAME/g,device.name.replace(/-/g,'0'))
-        $('#devices').append(html)
-      }    
       
-    function blenable(){
-      ble.enable(function() { $('#status').prepend("Bluetooth is enabled<br>"); $('#scan').removeClass('hide');scan(); },
-                 function() { $('#status').prepend("The user did *not* enable Bluetooth<br>"); blenable()}
-                );
-    }  
-      function failed(error){
-      $('#status').prepend(JSON.stringify(error)+'<br>');
-      }
-      var sendcol ='';
-      
-      function connect(id,name){
-        name = name.replace(/-/g,'0')
-        $('#status').prepend('trying to connect to "'+name+'" ,id: '+id+'<br>');
-        ble.connect(id,function(thisdevice){
-          $('#status').prepend(JSON.stringify(thisdevice));
-         $('#connectbut'+name).removeClass('disabled');
-      $('#services'+name).html('<div id="picker'+name+'"></div><div id="slide'+name+'"></div>');
-          ColorPicker(
-            document.getElementById('slide'+name),
-            document.getElementById('picker'+name),
-            function(hex, hsv, rgb) {               
-              if (sendcol!=hex){
-                sendcol=hex; $('#status').prepend(hex+'<br>');
-                var arra = ['56',hex.substr(1,2),hex.substr(3,2),hex.substr(5,2),'00','f0','aa'];
-                var bf = new Uint8Array(arra.length);
-                for (var y in arra){
-                  bf[y]='0x'+arra[y]
-                } 
-                $('#status').prepend(bf+'<br>');
-                write(id,bf.buffer);
-        }
-            });
-      },failed)
+      function notpg(){
+       $('#status').prepend('not phonegap<br>');
       }
       
-      function write(id,data){
-        //0000ffe5-0000-1000-8000-00805f9b34fb
-      ble.writeWithoutResponse(id,'ffe5','ffe9', data, function(resu){$('#status').prepend(resu+'<br>');}, failed);
-      }
+      
+
       </script> 
     </body>
 </html>
