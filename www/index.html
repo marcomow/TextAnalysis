@@ -80,13 +80,11 @@
     trigger: '@',
   noMatchTemplate: function(item){console.log(item)},
   fillAttr: 'value',
-  values: [{key:'Persona',value:'test'}],
-  requireLeadingSpace: false,
+  values: [{key:'Persona',value:'test'}]
   allowSpaces: false
 }
   ]
-});  
-        
+});          
         var html = '<span>'
         +$('#text').text()
         .replace(/\./g,'.</span><span>')
@@ -156,6 +154,9 @@
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" >'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
+          $('#fac'+t).on('tribute-no-match',function(nm){
+          console.log(nm);
+          });
         }
         
       }
