@@ -67,15 +67,15 @@
       function init(){
         var html = '<span>'
         +$('#text').text()
-        .replace(/./g,'.</span><span>')
-       // .replace(/,/g,',</span><span>')
-       // .replace(/:/g,':</span><span>')
-        //.replace(/\n/g,'\n</span><span>')
-       // .replace(/;/g,';</span><span>')
-       // .replace(/!/g,'!</span><span>')
-      //  .replace(/\?/g,'?</span><span>')
-      //  .replace(/'/g,"'</span><span>")
-       // .replace(/"/g,'"</span><span>')
+        .replace(/\./g,'.</span><span>')
+        .replace(/,/g,',</span><span>')
+        .replace(/:/g,':</span><span>')
+       .replace(/\n/g,'\n</span><span>')
+        .replace(/;/g,';</span><span>')
+        .replace(/!/g,'!</span><span>')
+        .replace(/\?/g,'?</span><span>')
+        .replace(/'/g,"'</span><span>")
+       .replace(/"/g,'"</span><span>')
         +'</span>';
         
         $('#text').html(html);
