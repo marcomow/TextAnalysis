@@ -21,7 +21,7 @@
       </style>
   </head>
   <body class="white">
-    <a class="btn green">add selection</a>
+    <a class="btn green" onclick="storesel()">add selection</a>
     <div class="container">
       <div id="status"></div>
       <div class="row">
@@ -56,10 +56,10 @@
       
       var db = {
         settings:{},
-        selections:{}
+        facts:{}
       }
       
-      var selnum = 0;
+      var factnum = 0;
       
       var thissel = {};
       var down = false;
@@ -94,6 +94,20 @@
       function hl(dis){
         console.log(dis);
         dis.toggleClass('hl');
+        var id = dis.attr('id');
+        if (thissel[id]===undefined){
+        thissel[id]=dis.text();
+        }
+        else{
+        delete thissel.id
+        }
+        console.log(thissel)
+      }
+      
+      function addsel(){
+      db['facts'][factnum]=thissel;
+      factnum++;
+        console.log(db);
       }
 
       </script> 
