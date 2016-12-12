@@ -57,7 +57,7 @@
         var num = 1;
         $('#text span').each(function(){
         $(this).attr('id',num);
-        $(this).mouseover(function(){
+        $(this).on('mousedown mouseover',function(){
         if(down){console.log($(this).attr('id'))}
         });
           num++;
