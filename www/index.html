@@ -50,13 +50,9 @@
       
       var down = false;
       function init(){
-        $(document)        
-          .mousedown(function(){down = true;console.log('down');})
-        .mouseup(function(){down = false});
-      $('#text span')
-      .mouseover(function(){
-      if (down){$(this).toggleClass('hl');console.log('selecting'+$(this).text())}
-      })
+        $(document).mouseup(function(){
+        console.log($(window).getSelection())
+        });
       }
       
 
