@@ -116,10 +116,11 @@
         id:''
       };
         $('.hl').removeClass('hl');
+          Materialize.toast('fact stored')
         console.log(db);
        displayfacts();
         }else{
-        alert('facts without reference do not count');
+        Materialize.toast('facts without reference do not count');
         }
       }
       
