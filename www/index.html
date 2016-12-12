@@ -111,6 +111,7 @@
       factnum++;
         thissel={}
         $('.hl').removeClass('hl');
+        console.log(db);
        displayfacts();
       }
       
@@ -118,7 +119,7 @@
       var fac = db.facts;
         var html = '';
         for (var t in fac){
-        html+='<div class="card green lighten-2" id="fact'+t+'">'+fac[t].comment+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'" onhover="">'+fac[t].comment+'</div>';
         }
         $('#comments').html(html)
       }
