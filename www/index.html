@@ -167,7 +167,7 @@
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
-          
+          document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
         }
         
       }
