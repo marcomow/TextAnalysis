@@ -56,7 +56,7 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
     <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova" onload="pg=true;"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="https://mir3z.github.io/texthighlighter/src/TextHighlighter.js"></script>
+    <script src="jquery.textHighlighter.js"></script>
     <script src="https://www.daviddurman.com/flexi-color-picker/js/colorpicker.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
@@ -77,7 +77,7 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
       } 
 
       function init(){
-        var hltr = new TextHighlighter($('#text'), {
+        $('#text').textHighlighter({
           onBeforeHighlight: function (range) {
            console.log(range);
           },
@@ -87,8 +87,8 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
           onRemoveHighlight: function (hl) {
            console.log(hl);
           }
-        });
-      
+        }
+        );
       
       }
       
