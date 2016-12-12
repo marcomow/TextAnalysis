@@ -48,10 +48,11 @@
         init()
       } 
       
-      var down = false;
+      var sel = '';
       function init(){
         $(document).mouseup(function(){
-        console.log($(window).getSelection())
+          sel = document.getSelection();
+        console.log(sel)
         });
       }
       
