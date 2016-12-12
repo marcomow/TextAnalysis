@@ -127,7 +127,7 @@
           for (var g in fac[t]['segments']){
           selector+='#'+g+' ,'
           }
-          selector.slice(0,-2);console.log(selector);
+          selector=selector.slice(0,-2);console.log(selector);
         html+='<div class="card green lighten-2" id="fact'+t+'" onclick="$(\''+selector+'\').toggleClass(\'blue\')" >'+fac[t].comment+'</div>';
         }
         $('#comments').html(html)
