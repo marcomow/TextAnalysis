@@ -39,14 +39,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="https://zurb.com/playground/uploads/upload/upload/435/tribute.js"></script>
     <script type="text/javascript">
+      var tribute;
       $(document).ready(function(){
-        var tribute = new Tribute({
-  values: [
-    {key: 'Phil Heartman', value: 'pheartman'},
-    {key: 'Gordon Ramsey', value: 'gramsey'}
-  ]
-})
-       $('#status').prepend('document ready<br>');
+        $('#status').prepend('document ready<br>');
        if(pg===true){
          $('#status').prepend('phonegap<br>');
          $(document).on('deviceready', onDeviceReady);
@@ -80,6 +75,13 @@
       var down = false;
       
       function init(){
+         tribute = new Tribute({
+  values: [
+    {key: 'Phil Heartman', value: 'pheartman'},
+    {key: 'Gordon Ramsey', value: 'gramsey'}
+  ]
+});  
+        
         var html = '<span>'
         +$('#text').text()
         .replace(/\./g,'.</span><span>')
