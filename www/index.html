@@ -125,7 +125,7 @@
         for (var t in fac){
           var selector = '';
           for (var g in fac[t]['segments']){
-          selector+='#'+fac[t]['segments'][g]+' ,'
+          selector+='#'+g+' ,'
           }
         html+='<div class="card green lighten-2" id="fact'+t+'" onclick="$(\''+selector+'\').toggleClass(\'blue\')" >'+fac[t].comment+'</div>';
         }
