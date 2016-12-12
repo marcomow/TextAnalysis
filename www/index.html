@@ -58,7 +58,7 @@
         $('#text span').each(function(){
         $(this).attr('id',num);
           $(this).mouseover(function(){        if(down){hl($(this))}        });
-          $(this).mouseover(function(){        if(down){hl($(this))}        });
+          $(this).mousedown(function(){        if(down){hl($(this))}        });
           num++;
         });
       }
