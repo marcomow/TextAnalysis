@@ -71,6 +71,7 @@
         $('#text span').each(function(){
         $(this).attr('id',num);
           $(this).mouseover(function(){        if(down){hl($(this))}        });
+          $(this).click(function(){       hl($(this))        });
           num++;
         });
       }
