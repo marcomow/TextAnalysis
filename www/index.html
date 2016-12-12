@@ -78,7 +78,7 @@
          tribute = new Tribute({
   collection: [{
     trigger: '@',
-  noMatchTemplate: null,
+  noMatchTemplate: function(item){console.log(item)},
   fillAttr: 'value',
   values: [{key:'Persona',value:'test'}],
   requireLeadingSpace: false,
