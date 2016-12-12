@@ -172,6 +172,7 @@
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()"></div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
+          $('#fac'+t).keyup(function(){db.facts[t]['comment']=$(this).text();console.log(db)});
          // document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
         }
         
