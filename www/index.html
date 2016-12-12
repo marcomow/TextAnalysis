@@ -107,6 +107,8 @@
       function addsel(){
       db['facts'][factnum]=thissel;
       factnum++;
+        thissel={}
+        $('.hl').removeClass('hl');
         console.log(db);
       }
 
