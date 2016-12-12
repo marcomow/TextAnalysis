@@ -81,13 +81,13 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
       function init(){
             var hltr = new TextHighlighter( document.getElementById('text'), {
                 onBeforeHighlight: function (range) {
-                   console.log(range);
+                 return  console.log(range);
                 },
                 onAfterHighlight: function (range, highlights) {
-                  console.log(highlights);
+                 return console.log(highlights);
                 },
                 onRemoveHighlight: function (hl) {
-                   console.log(hl);
+                 return  console.log(hl);
                 }
             });
       
