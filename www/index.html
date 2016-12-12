@@ -106,8 +106,8 @@
       }
       
       function storesel(){
-        console.log(Object.keys(thisfact['segments']));
-        if(thisfact['segments'].length>0){
+        console.log(Object.keys(thisfact['segments']).length);
+        if(Object.keys(thisfact['segments']).length>0){
         thisfact['comment']=prompt('comment');
       db['facts'][factnum]=thisfact;
       factnum++;
