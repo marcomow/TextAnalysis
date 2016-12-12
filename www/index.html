@@ -78,18 +78,27 @@
            collection: [{
              trigger: '@',
              fillAttr: 'value',
+             selectTemplate: function (item) {
+               return '@' + item.original.value;
+             },
              values: [{key:'John',value:'john'},{key:'Eva',value:'eva'}],
              allowSpaces: false
            },
             {
              trigger: '#',
              fillAttr: 'value',
+              selectTemplate: function (item) {
+               return '#' + item.original.value;
+             },
              values: [{key:'Light issue',value:'light'},{key:'Heavy issue',value:'heavy'}],
              allowSpaces: false
            },  
             {
              trigger: '?',
              fillAttr: 'value',
+              selectTemplate: function (item) {
+               return '?' + item.original.value;
+             },
              values: [{key:'Test',value:'test'},{key:'Testimonial',value:'testimonial'}],
              allowSpaces: false
            },           
