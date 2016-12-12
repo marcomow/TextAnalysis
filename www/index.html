@@ -142,7 +142,7 @@
           selector=selector.slice(0,-2);console.log(selector);
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" >'+fac[t].comment+'</div>';
           $('#comments').append(html);
-          new Taggle('fact'+g);
+          new Taggle('fact'+t);
         }
         
       }
