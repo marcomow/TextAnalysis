@@ -106,6 +106,7 @@
       }
       
       function storesel(){
+        thissel['comment']=prompt('comment');
       db['facts'][factnum]=thissel;
       factnum++;
         thissel={}
@@ -117,9 +118,7 @@
       var fac = db.facts;
         var html = '';
         for (var t in fac){
-          var text ='';
-          for (var a in fac[t]){text+=fac[t][a]}
-        html+='<div class="card green lighten-2" id="fact'+t+'">'+text+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'">'+fac[t].comment+'</div>';
         }
         $('#comments').html(html)
       }
