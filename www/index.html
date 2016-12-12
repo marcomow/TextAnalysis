@@ -47,10 +47,14 @@
         $('#status').prepend('device ready<br>');
         init()
       } 
-
+      
+      var down = false;
       function init(){
-      $('#text span').mousedown(function(){
-      $(this).toggleClass('hl');
+      $('#text span')
+        .mousedown(function(){down = true})
+        .mouseup(function(){down = false})
+      .mouseover(function(){
+      if (down){$(this).toggleClass('hl')}
       })
       }
       
