@@ -81,12 +81,12 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
       function init(){
             var hltr = new TextHighlighter( document.getElementById('text'), {
                 onBeforeHighlight: function (range) {
-                    return window.confirm('Selected text: ' + range + '\nReally highlight?');
+                   // return window.confirm('Selected text: ' + range + '\nReally highlight?');
                 },
                 onAfterHighlight: function (range, highlights) {
-                    window.alert('Created ' + highlights.length + ' highlight(s): ' + highlights.map(function (h) {
-                        return '"' + h.innerText + '"';
-                    }).join(', '));
+                    //window.alert('Created ' + highlights.length + ' highlight(s): ' + highlights.map(function (h) {
+                     //   return '"' + h.innerText + '"';
+                   // }).join(', '));
                 },
                 onRemoveHighlight: function (hl) {
                     return window.confirm('Do you really want to remove: "' + hl.innerText + '"');
