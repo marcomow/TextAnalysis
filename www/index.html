@@ -106,6 +106,7 @@
       }
       
       function storesel(){
+        console.log(thisfact['segments'].length);
         if(thisfact['segments'].length>0){
         thisfact['comment']=prompt('comment');
       db['facts'][factnum]=thisfact;
@@ -116,11 +117,11 @@
         id:''
       };
         $('.hl').removeClass('hl');
-          Materialize.toast('fact stored')
+          Materialize.toast('fact stored',2000)
         console.log(db);
        displayfacts();
         }else{
-        Materialize.toast('facts without reference do not count');
+        Materialize.toast('facts without reference do not count',2000);
         }
       }
       
