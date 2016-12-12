@@ -163,7 +163,7 @@
           selector+='#'+g+' ,'
           }
           selector=selector.slice(0,-2)
-        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).text()">'+fac[t].comment+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).html()">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
