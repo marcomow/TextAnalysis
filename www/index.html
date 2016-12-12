@@ -20,7 +20,7 @@
       <div id="status"></div>
       <div class="row">
         <div class="col s11" id="text">
- 
+          <span>Lorem</span><span>ipsum</span><span>dolor</span><span>sit</span><span>amet,</span><span>consectetur</span><span>adipiscing</span><span>elit.</span><span>Ut</span><span>tempor</span><span>gravida</span><span>ligula,</span><span>ultricies</span><span>sagittis</span><span>neque</span><span>pulvinar</span><span>nec.</span><span>Integer</span><span>pulvinar</span><span>pharetra</span><span>enim,</span><span>eu</span><span>ullamcorper</span><span>enim.</span><span>Cras</span><span>maximus</span><span>commodo</span><span>justo,</span><span>vitae</span><span>luctus</span><span>ligula</span><span>faucibus</span><span>quis.</span><span>Morbi</span><span>congue</span><span>rutrum</span><span>sem,</span><span>quis</span><span>congue</span><span>dolor</span><span>hendrerit</span><span>quis.</span><span>Quisque</span><span>ac</span><span>ex</span><span>nulla.</span><span>Ut</span><span>ac</span><span>libero</span><span>ut</span><span>augue</span><span>dignissim</span><span>laoreet</span><span>eu</span><span>nec</span><span>mi.</span><span>Phasellus</span><span>bibendum</span><span>mattis</span><span>laoreet.</span><span>Pellentesque</span><span>ipsum</span><span>odio,</span><span>suscipit</span><span>ut</span><span>magna</span><span>suscipit,</span><span>viverra</span><span>ullamcorper</span><span>metus.</span><span>Sed</span><span>cursus</span><span>velit</span><span>eu</span><span>enim</span><span>pulvinar,</span><span>in</span><span>rutrum</span><span>nisl</span><span>finibus.</span><span>Proin</span><span>in</span><span>quam</span><span>nec</span><span>tortor</span><span>vehicula</span><span>consectetur.</span><span>Nullam</span><span>semper</span><span>hendrerit</span><span>ante</span><span>aliquam</span><span>suscipit.</span><span>Curabitur</span><span>eu</span><span>cursus</span><span>lacus.</span><span>Duis</span><span>sed</span><span>magna</span><span>vitae</span><span>enim</span><span>pellentesque</span><span>efficitur</span><span>nec</span><span>at</span><span>metus.</span><span>Pellentesque</span><span>sed</span><span>faucibus</span><span>orci.</span><span>Suspendisse</span><span>fringilla</span><span>erat</span><span>at</span><span>nibh</span><span>consequat</span><span>faucibus.</span><span>Ut</span><span>hendrerit</span><span>massa</span><span>luctus</span><span>metus</span><span>tempor,</span><span>vitae</span><span>feugiat</span><span>massa</span><span>hendrerit.</span>
         </div>
         <div class="col s1" id="comments"></div>
       </div>
@@ -49,7 +49,9 @@
       } 
 
       function init(){
-      
+      $('#text span').mouseup(function(){
+      $(this).toggleClass('hl');
+      })
       }
       
 
