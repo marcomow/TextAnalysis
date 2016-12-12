@@ -49,10 +49,18 @@
       } 
       
       var sel = '';
+      var down = false;
+      
       function init(){
-        $(document).mouseup(function(){
-          sel = document.getSelection();
-        console.log(sel)
+        $(document).mousedown(function(){down=true});
+        $(document).mouseup(function(){down=false});
+        var num = 1;
+        $('#text span').each(function(){
+        $(this).attr('id',num);
+        $(this).mouseover(function(){
+        if(down){console.log($(this).attr('id'))}
+        });
+          num++;
         });
       }
       
