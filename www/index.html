@@ -50,9 +50,10 @@
       
       var down = false;
       function init(){
+        $(document)        
+          .mousedown(function(){down = true})
+        .mouseup(function(){down = false});
       $('#text span')
-        .mousedown(function(){down = true})
-        .mouseup(function(){down = false})
       .mouseover(function(){
       if (down){$(this).toggleClass('hl')}
       })
