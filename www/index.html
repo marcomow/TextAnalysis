@@ -67,7 +67,8 @@
       
       var thisfact = {
         segments:{},
-        id:''
+        id:'',
+        comment:''
       };
       
       
@@ -139,7 +140,8 @@
       factnum++;
         thisfact={
         segments:{},
-        id:''
+        id:'',
+          comment:''
       };
         $('.hl').removeClass('hl');
           Materialize.toast('fact stored',2000)
@@ -160,8 +162,8 @@
           for (var g in fac[t]['segments']){
           selector+='#'+g+' ,'
           }
-          selector=selector.slice(0,-2);console.log(selector);
-        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).text();console.log(db)"></div>';
+          selector=selector.slice(0,-2)
+        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).text();console.log(db)">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
