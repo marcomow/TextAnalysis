@@ -76,15 +76,15 @@
       
       function init(){
          tribute = new Tribute({
-  collection: [{
-    trigger: '@',
-  noMatchTemplate: function(item){console.log(item)},
-  fillAttr: 'value',
-  values: [{key:'Persona',value:'test'}]
-  allowSpaces: false
-}
-  ]
-});          
+           collection: [{
+             trigger: '@',
+             noMatchTemplate: function(item){console.log(item)},
+             fillAttr: 'value',
+             values: [{key:'Persona',value:'test'}],
+             allowSpaces: false
+           }]
+         });          
+        
         var html = '<span>'
         +$('#text').text()
         .replace(/\./g,'.</span><span>')
