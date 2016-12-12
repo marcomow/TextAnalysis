@@ -59,7 +59,8 @@
       
       var db = {
         settings:{},
-        facts:{}
+        facts:{},
+        people:{}
       }
       
       var factnum = 0;
@@ -92,16 +93,7 @@
              },
              values: [{key:'Light issue',value:'light'},{key:'Heavy issue',value:'heavy'}],
              allowSpaces: false
-           },  
-            {
-             trigger: '?',
-             fillAttr: 'value',
-              selectTemplate: function (item) {
-               return '?' + item.original.value;
-             },
-             values: [{key:'Test',value:'test'},{key:'Testimonial',value:'testimonial'}],
-             allowSpaces: false
-           },           
+           }
                        ]
          });          
         
@@ -172,7 +164,8 @@
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).text();console.log(db)"></div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
-         // document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
+          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
+          
         }
         
       }
