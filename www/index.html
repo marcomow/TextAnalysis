@@ -48,7 +48,7 @@ Suspendisse vel tortor laoreet, posuere sapien id, laoreet purus. Curabitur ante
 
 Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempus feugiat. Nunc in iaculis justo, ut molestie risus. Aenean iaculis sed ipsum vel porta. Nunc gravida, mi sed cursus viverra, ligula metus sodales sem, sed laoreet dolor nisi eu metus. Pellentesque dapibus ligula eu diam dictum, at gravida libero eleifend. Vivamus ullamcorper pretium purus, et tempor velit tempus non. Praesent id justo eleifend, laoreet justo ut, pharetra tellus. Praesent quis turpis sem. Integer a maximus purus. In hac habitasse platea dictumst. Praesent posuere purus at leo vestibulum, nec scelerisque elit iaculis. Pellentesque mattis tortor quis cursus rutrum. Etiam et augue aliquam, pharetra arcu non, finibus tortor.
         </div>
-        <div class="col s1"></div>
+        <div class="col s1" id="comments"></div>
       </div>
     </div>
     
@@ -56,6 +56,7 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
     <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova" onload="pg=true;"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="http://mir3z.github.io/texthighlighter/src/TextHighlighter.js"></script>
     <script src="https://www.daviddurman.com/flexi-color-picker/js/colorpicker.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
@@ -66,14 +67,30 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
        }
         else{
         $('#status').prepend('not phonegap<br>');
+          init();
         }
       });
       
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
+        init()
       } 
 
+      function init(){
+        var hltr = new TextHighlighter($('#comments'), {
+          onBeforeHighlight: function (range) {
+           console.log(range);
+          },
+          onAfterHighlight: function (range, highlights) {
+            console.log(highlights)
+          },
+          onRemoveHighlight: function (hl) {
+           console.log(hl);
+          }
+        });
       
+      
+      }
       
 
       </script> 
