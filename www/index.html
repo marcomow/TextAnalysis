@@ -106,17 +106,21 @@
       }
       
       function storesel(){
+        if(thisfact['comment'].length>0){
         thisfact['comment']=prompt('comment');
       db['facts'][factnum]=thisfact;
       factnum++;
         thisfact={
-        segments:[],
+        segments:{},
         comment:'',
         id:''
       };
         $('.hl').removeClass('hl');
         console.log(db);
        displayfacts();
+        }else{
+        alert('facts without reference do not count');
+        }
       }
       
       function displayfacts(){
