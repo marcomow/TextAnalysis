@@ -61,7 +61,7 @@
       
       var selnum = 0;
       
-      var thissel = '';
+      var thissel = {};
       var down = false;
       
       function init(){
@@ -71,14 +71,13 @@
         $('#text span').each(function(){
         $(this).attr('id',num);
           $(this).mouseover(function(){        if(down){hl($(this))}        });
-          $(this).mousedown(function(){        if(down){hl($(this))}        });
           num++;
         });
       }
       
       function hl(dis){
         console.log(dis);
-        dis.addClass('hl');
+        dis.toggleClass('hl');
       }
 
       </script> 
