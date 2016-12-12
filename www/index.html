@@ -62,7 +62,11 @@
       
       var factnum = 0;
       
-      var thissel = {};
+      var thisfact = {
+        segments:{},
+        comment:'',
+        id:''
+      };
       var down = false;
       
       function init(){
@@ -96,20 +100,20 @@
         console.log(dis);
         dis.toggleClass('hl');
         var id = dis.attr('id');
-        if (thissel[id]===undefined){
-        thissel[id]=dis.text();
-        }
-        else{
-        delete thissel[id]
-        }
-        console.log(thissel)
+        if(thisfact['segments'][id]===undefined){thisfact['segments'][id]=dis.text()}
+        else{delete thisfact['segments'][id]}
+        console.log(thisfact)
       }
       
       function storesel(){
-        thissel['comment']=prompt('comment');
-      db['facts'][factnum]=thissel;
+        thisfact['comment']=prompt('comment');
+      db['facts'][factnum]=thisfact;
       factnum++;
-        thissel={}
+        thisfact={
+        segments:[],
+        comment:'',
+        id:''
+      };
         $('.hl').removeClass('hl');
         console.log(db);
        displayfacts();
@@ -119,7 +123,11 @@
       var fac = db.facts;
         var html = '';
         for (var t in fac){
-        html+='<div class="card green lighten-2" id="fact'+t+'" onhover="">'+fac[t].comment+'</div>';
+          var selector = '';
+          for (var g in fac[t]['segments']){
+          selector+='#'+fac[t]['segments'][g]+' ,'
+          }
+        html+='<div class="card green lighten-2" id="fact'+t+'" onclick="$(\''+selector+'\').toggleClass(\'blue\')" >'+fac[t].comment+'</div>';
         }
         $('#comments').html(html)
       }
