@@ -57,13 +57,16 @@
         var num = 1;
         $('#text span').each(function(){
         $(this).attr('id',num);
-        $(this).on('mousedown mouseover',function(){
-        if(down){console.log($(this).attr('id'))}
-        });
+          $(this).mouseover(function(){        if(down){hl($(this))}        });
+          $(this).mouseover(function(){        if(down){hl($(this))}        });
           num++;
         });
       }
       
+      function hl(dis){
+        console.log(dis.attr('id'));
+        dis.addClass('hl');
+      }
 
       </script> 
     </body>
