@@ -66,7 +66,6 @@
       
       var thisfact = {
         segments:{},
-        comment:'',
         id:''
       };
       
@@ -78,11 +77,23 @@
          tribute = new Tribute({
            collection: [{
              trigger: '@',
-             noMatchTemplate: function(item){console.log(item)},
              fillAttr: 'value',
-             values: [{key:'Persona',value:'test'}],
+             values: [{key:'John',value:'john'},{key:'Eva',value:'eva'}],
              allowSpaces: false
-           }]
+           },
+            {
+             trigger: '#',
+             fillAttr: 'value',
+             values: [{key:'Light issue',value:'light'},{key:'Heavy issue',value:'heavy'}],
+             allowSpaces: false
+           },  
+            {
+             trigger: '?',
+             fillAttr: 'value',
+             values: [{key:'Test',value:'test'},{key:'Testimonial',value:'testimonial'}],
+             allowSpaces: false
+           },           
+                       ]
          });          
         
         var html = '<span>'
@@ -123,12 +134,10 @@
       function storesel(){
         console.log(Object.keys(thisfact['segments']).length);
         if(Object.keys(thisfact['segments']).length>0){
-        thisfact['comment']=prompt('comment');
       db['facts'][factnum]=thisfact;
       factnum++;
         thisfact={
         segments:{},
-        comment:'',
         id:''
       };
         $('.hl').removeClass('hl');
@@ -151,7 +160,7 @@
           selector+='#'+g+' ,'
           }
           selector=selector.slice(0,-2);console.log(selector);
-        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" >'+fac[t].comment+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()"></div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
           $('#fac'+t).on('tribute-no-match',function(nm){
