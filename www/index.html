@@ -52,21 +52,22 @@ Proin et justo eu est commodo malesuada eget eu odio. Nam lobortis nisi id tempu
       </div>
     </div>
     
-    <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova"></script>
+    <script>var pg = false;</script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova" onload="pg=true;"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script src="https://www.daviddurman.com/flexi-color-picker/js/colorpicker.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
        $('#status').prepend('document ready<br>');
-       $('#cordova').on('error',function(){
-       $('#status').prepend('not phonegap<br>');
-       });
+       if(pg===true){
+         $('#status').prepend('phonegap<br>');
+         $(document).on('deviceready', onDeviceReady);
+       }
+        else{
+        $('#status').prepend('not phonegap<br>');
+        }
       });
-      
-      function pg(){
-      $(document).on('deviceready', onDeviceReady);
-      }
       
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
