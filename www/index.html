@@ -283,7 +283,8 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       }
       
       function displayfacts(){
-        $('#comments').html('<a class="btn green" onclick="storesel()">add fact</a>')
+        $('#comments').html('')
+        $('#comments').append('<a class="btn green" onclick="storesel()">add fact</a>');
       var fac = db.facts;
 
         for (var t in fac){
