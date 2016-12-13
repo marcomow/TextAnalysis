@@ -148,8 +148,9 @@ Gandrīz aizmidzis Džeisons jautā mātei:
      <a class="btn-floating waves-effect waves-light transparent button-collapse" style="position:fixed;top:5px;right:5px" data-activates="slide-out" ><i class="material-icons black-text">menu</i></a>
    
     
-     <ul id="slide-out" class="side-nav fixed" id="comments">
+     <ul id="slide-out" class="side-nav fixed">
        <li><a class="btn green" onclick="storesel()">add fact</a></li>
+       <li id="comments"></li>
     </ul>
     
     
@@ -283,8 +284,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       }
       
       function displayfacts(){
-        $('#comments').html('')
-        $('#comments').append('<a class="btn green" onclick="storesel()">add fact</a>');
+        $('#comments').html('');
       var fac = db.facts;
 
         for (var t in fac){
