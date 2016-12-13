@@ -359,7 +359,7 @@ function factupdate(t,text,kup){
         $('#addfact').addClass('hide');
         $('#factbtn').removeClass('hide');
         
-        if (Object.keys(db.people).length<1){$('#dbdisplay').append('No '+cat+' tagged yet');}
+        if (Object.keys(db.people).length<1){$('#dbdisplay').append('<div class="card">No '+cat+' tagged yet</div>');}
         else{
         for (var a in db[cat]){
           var html = '<div class="card '+color+' white-text">'+db[cat][a]['key']+'</div>';
