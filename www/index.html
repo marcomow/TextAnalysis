@@ -328,7 +328,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       var digiting = false; var lasttrigger ='';
       
 function factupdate(t,kup){
-  var text =$('#fac'+t).html();
+  var text =$('#fac'+t).attr('id');
   console.log(text);
     db.facts[t]['comment']=text; 
   
