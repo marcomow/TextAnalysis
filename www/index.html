@@ -182,7 +182,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       function factupdate(t,text){
       db.facts[t]['comment']=text;
         var ls = text.substr(text.length - 1,1);
-        var lastisspace=ls===' ';
+        var lastisspace=ls.indexOf(' ')>-1;
         console.log('ls:'+ls+',check space:'+lastisspace+',digiting:'+digiting);
         if(digiting && lastisspace ){
           db.people[newname]={
