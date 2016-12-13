@@ -307,7 +307,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
           selector+='#'+g+' ,'
           }
           selector=selector.slice(0,-2)
-        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')">'+fac[t].comment+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green white-text\')" onmouseout="$(\''+selector+'\').removeClass(\'green white-text\')">'+fac[t].comment+'</div>';
           $('#dbdisplay').append(html);
           
           tribute.attach(document.getElementById('fact'+t));
