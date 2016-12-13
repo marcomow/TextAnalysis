@@ -355,6 +355,7 @@ function factupdate(t,text,kup){
   }      
 }
       function displaypeople(){
+        $('#dbdisplay').append('');
         $('#addfact').addClass('hide');
         $('#factbtn').removeClass('hide');
         
@@ -366,6 +367,7 @@ function factupdate(t,text,kup){
       }
       
       function displayissues(){
+         $('#dbdisplay').append('');
         $('#addfact').addClass('hide');
         $('#factbtn').removeClass('hide')
               for (var a in db.issues){
