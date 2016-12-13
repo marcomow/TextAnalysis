@@ -315,11 +315,11 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       
 function factupdate(t,text,kup){
   var lc = text.substr(text.length-1,1);
-  console.log(t);
   if(lc==='@'||lc==='#'){lasttrigger=lc}
   db.facts[t]['comment']=text; 
   if(digiting && kup==='Space'){
     var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
+    console.log(lasttrigger);
     if (lasttrigger==='@'){
       if(db.people[name]===undefined){
         db.people[name]={
