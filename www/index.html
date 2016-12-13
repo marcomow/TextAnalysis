@@ -181,8 +181,9 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       
       function factupdate(t,text){
       db.facts[t]['comment']=text;
-        console.log('check space:'+text.substr(text.length - 1,1)===' '+',digiting:'+digiting);
-        if(digiting && text.substr(text.length - 1,1)===' ' ){
+        var lastisspace=text.substr(text.length - 1,1)===' ';
+        console.log('check space:'+lastisspace+',digiting:'+digiting);
+        if(digiting && lastisspace ){
           db.people[newname]={
           name:newname,
           }
