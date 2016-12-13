@@ -24,11 +24,10 @@
         }
       </style>
   </head>
-  <body class="white" style="overflow:hidden">
-    <div class="container" style="overflow:hidden">
+  <body class="white">
+    <div class="container">
       <div id="status" class="hide"></div>
-      <div class="row" style="overflow:hidden">
-        <div id="text" style="position:absolute;overflow:auto" class="col s8">
+        <div id="text">
         Ģimenes noslēpums
       
          Džeisonam pēc dažiem mēnešiem būs trīs gadi. Viņa vecāki, Helēna un Džeimss jūtas vīlušies attiecībā uz dēla uzvedību: tā vienā mirklī var mainīties nomierīgas, pieauguša cilvēka uzvedības līdz pat agresīvai un kaprīzai uzvedībai. 
@@ -145,14 +144,15 @@ Gandrīz aizmidzis Džeisons jautā mātei:
 “Māmiņ, ja es rīt viens nešķērsošu ielu, vai tu man nopirksi mazu kūciņu kā vectēvs to dara.”
        
         </div>
-        <div class="col s3" id="comments" style="position:absolute;right:0px;overflow:auto">
-        <a class="btn green" onclick="storesel()">add fact</a>
-        </div>
-      </div>
       </div>
      <a class="btn-floating waves-effect waves-light transparent button-collapse" style="position:fixed;top:5px;right:5px" data-activates="slide-out" ><i class="material-icons black-text">menu</i></a>
    
-
+    
+     <ul id="slide-out" class="side-nav fixed" id="comments">
+       <li><a class="btn green" onclick="storesel()">add fact</a></li>
+    </ul>
+    
+    
     
     
     
@@ -200,6 +200,14 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       var down = false;
       
       function init(){
+          $('.button-collapse').sideNav({
+      menuWidth: 300, 
+      edge: 'right', 
+      closeOnClick: true, 
+      draggable: true 
+    }
+  );
+        
         
          tribute = new Tribute({
            collection: [{
@@ -275,7 +283,8 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       }
       
       function displayfacts(){
-        $('#comments').html('<a class="btn green" onclick="storesel()">add fact</a>');
+        $('#comments').html('');
+        $('#comments').append('<a class="btn green" onclick="storesel()">add fact</a>');
       var fac = db.facts;
 
         for (var t in fac){
