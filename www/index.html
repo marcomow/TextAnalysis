@@ -329,7 +329,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       
 function factupdate(t,kup){
   var text =$('#fac'+t).attr('id');
-  console.log(text);
+  console.log(t);
     db.facts[t]['comment']=text; 
   
   var lc = text.substr(text.length-1,1);
