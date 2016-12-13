@@ -173,7 +173,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
                     
           tribute.attach(document.getElementById('fact'+t));
           console.log($('#fac'+t));
-           document.getElementById('fact'+t).addEventListener('keyup',function(kup){console.log(kup);factupdate(t,$(this).text(),kup)});
+           document.getElementById('fact'+t).addEventListener('keyup',function(kup){console.log(kup.code==='Space');factupdate(t,$(this).text(),kup.code)});
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(tribute)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
@@ -184,9 +184,8 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       var digiting = false;
       
       function factupdate(t,text,kup){
-      db.facts[t]['comment']=text;
-        var lastisspace=/\s+$/.test(text);  
-        if(digiting && lastisspace){
+      db.facts[t]['comment']=text; 
+        if(digiting && kup==='Space'){
           var name = text.substring(text.lastIndexOf("@") + 1, text.length-1);
           if(db.people[name]===undefined){
           db.people[name]={
