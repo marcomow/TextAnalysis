@@ -315,7 +315,12 @@ Gandrīz aizmidzis Džeisons jautā mātei:
     document.getElementById('fact'+t).addEventListener('keyup',function(kup){factupdate(t,$(this).text(),kup.code)});
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;});
-          document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
+          document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { 
+            var tr = e.detail.substr(e.detail.length-1,1);var name = e.detail.substr(1,e.detail.length-1);
+            if (tr==='@'){var cat = 'people'}else if(tr==='#'){var cat = 'issues'}
+           db[cat][name].facts.push(e.srcElement.id.replace('fact',''));
+            Materialize.toast('updated '+tr+name,1500)
+          });
         }
         
       }
@@ -336,7 +341,6 @@ function factupdate(t,text,kup){
       function addel(lasttrigger,name,t){
         var cat ='';var coll =0;
         if (lasttrigger==='@'){cat='people';}else if (lasttrigger==='#'){cat='issues';coll=1}
-            if(db[cat][name]===undefined){
         db[cat][name]={
           key:name,
           value:name,
@@ -345,8 +349,6 @@ function factupdate(t,text,kup){
         tribute.append(coll,[db[cat][name]])
         Materialize.toast('added '+lasttrigger+name,1500)
       }
-      else{db[cat][name].facts.push(t);console.log(db[cat][name].facts)}
-      
       }
       
       function displayer(cat,color){
