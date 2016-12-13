@@ -319,7 +319,6 @@ function factupdate(t,text,kup){
   db.facts[t]['comment']=text; 
   if(digiting && kup==='Space'){
     var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
-    console.log(lasttrigger);
     if (lasttrigger==='@'){
       if(db.people[name]===undefined){
         db.people[name]={
@@ -344,6 +343,7 @@ function factupdate(t,text,kup){
     }  
     digiting = false;
     console.log(db);
+    console.log(tribute.collection);
   }      
 }
       
