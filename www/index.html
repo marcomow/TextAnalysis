@@ -327,17 +327,14 @@ function factupdate(t,text,kup){
   db.facts[t]['comment']=text; 
   if(digiting && kup==='Space'){
     var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
-    if (lasttrigger==='@'){
-      addel('people',name,t)
-    }
-    if (lasttrigger==='#'){
-      addel('issues',name,t)
-    }  
+      addel(lasttrigger,name,t)
     digiting = false;
   }      
 }
       
-      function addel(cat,name,t){
+      function addel(lasttrigger,name,t){
+        var cat ='';
+        if (lasttrigger==='@'){cat='people'}else if (lasttrigger==='#'){cat='issues'}
             if(db[cat][name]===undefined){
         db[cat][name]={
           key:name,
@@ -345,7 +342,7 @@ function factupdate(t,text,kup){
           facts:[t]
         }
         tribute.append(0,[db[cat][name]])
-        Materialize.toast('added @'+name,1500)
+        Materialize.toast('added '+lasttrigger+name,1500)
       }
       else{db[cat][name].facts.push(t)}
       
