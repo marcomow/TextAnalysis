@@ -328,16 +328,16 @@ function factupdate(t,text,kup){
   if(digiting && kup==='Space'){
     var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
     if (lasttrigger==='@'){
-      addel('people',name)
+      addel('people',name,t)
     }
     if (lasttrigger==='#'){
-      addel('issues',name)
+      addel('issues',name,t)
     }  
     digiting = false;
   }      
 }
       
-      function addel(cat,name){
+      function addel(cat,name,t){
             if(db[cat][name]===undefined){
         db[cat][name]={
           key:name,
