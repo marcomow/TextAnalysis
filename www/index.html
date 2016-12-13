@@ -173,7 +173,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
                     
           tribute.attach(document.getElementById('fact'+t));
           console.log($('#fac'+t));
-          $('#fac'+t).keyup(function(kup){console.log(kup);factupdate(t,$(this).text(),kup)});
+           document.getElementById('fact'+t).addEventListener('keyup',function(kup){console.log(kup);factupdate(t,$(this).text(),kup)});
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(tribute)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
