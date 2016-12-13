@@ -359,20 +359,26 @@ function factupdate(t,text,kup){
         $('#addfact').addClass('hide');
         $('#factbtn').removeClass('hide');
         
+        if (Object.keys(db.people).length<1){$('#dbdisplay').append('No people tagged yet');}
+        else{
         for (var a in db.people){
           var html = '<div class="card blue white-text">'+db.people[a]['key']+'</div>';
         $('#dbdisplay').append(html);
         }
-        
+        }
       }
       
       function displayissues(){
          $('#dbdisplay').append('');
         $('#addfact').addClass('hide');
         $('#factbtn').removeClass('hide')
+        
+        if (Object.keys(db.issues).length<1){$('#dbdisplay').append('No issues tagged yet');}
+        else{
               for (var a in db.issues){
           var html = '<div class="card red white-text">'+db.issues[a]['key']+'</div>';
         $('#dbdisplay').append(html);
+        }
         }
       }
       
