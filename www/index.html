@@ -168,8 +168,10 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
           selector+='#'+g+' ,'
           }
           selector=selector.slice(0,-2)
-        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="function(e){factupdate(\''+t+'\',$(this).text(),e)}">'+fac[t].comment+'</div>';
+        html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()">'+fac[t].comment+'</div>';
           $('#comments').append(html);
+          $('#fac'+t).keyup(function(kup){factupdate(t,$(this).text(),kup)});
+          
           tribute.attach(document.getElementById('fact'+t));
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(tribute)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
