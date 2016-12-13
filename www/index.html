@@ -22,11 +22,9 @@
       </style>
   </head>
   <body class="white">
-    <a class="btn green" onclick="storesel()">add fact</a>
     <div class="container">
       <div id="status" class="hide"></div>
-      <div class="row">
-        <div class="col s8" id="text">
+        <div id="text">
         Ģimenes noslēpums
       
          Džeisonam pēc dažiem mēnešiem būs trīs gadi. Viņa vecāki, Helēna un Džeimss jūtas vīlušies attiecībā uz dēla uzvedību: tā vienā mirklī var mainīties nomierīgas, pieauguša cilvēka uzvedības līdz pat agresīvai un kaprīzai uzvedībai. 
@@ -143,9 +141,17 @@ Gandrīz aizmidzis Džeisons jautā mātei:
 “Māmiņ, ja es rīt viens nešķērsošu ielu, vai tu man nopirksi mazu kūciņu kā vectēvs to dara.”
        
         </div>
-        <div class="col s4" id="comments"></div>
+        
       </div>
+    
+    
+     <div id="slide-out" class="side-nav fixed" id="comments">
+       <a class="btn green" onclick="storesel()">add fact</a>
     </div>
+    
+    
+    
+    
     
     <script>var pg = false;</script>
     <script type="text/javascript" charset="utf-8" src="cordova.js" id="cordova" onload="pg=true;"></script>
@@ -265,7 +271,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       }
       
       function displayfacts(){
-        $('#comments').html('')
+        $('#comments').html('<a class="btn green" onclick="storesel()">add fact</a>')
       var fac = db.facts;
 
         for (var t in fac){
