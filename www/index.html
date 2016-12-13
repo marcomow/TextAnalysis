@@ -148,13 +148,14 @@ Gandrīz aizmidzis Džeisons jautā mātei:
      <a class="btn-floating waves-effect waves-light transparent button-collapse" style="position:fixed;top:5px;right:5px" data-activates="slide-out" ><i class="material-icons black-text">menu</i></a>
    
     
-     <ul id="slide-out" class="side-nav fixed" id="comments">
+     <ul id="slide-out" class="side-nav fixed">
        <li class="row">
          <a class="col s4 btn green waves-effect waves-light" onclick="storesel()">add fact</a>
          <a class="col s3 btn green waves-effect waves-light hide"><b>F</b></a>
          <a class="col s3 btn blue waves-effect waves-light"><b>@</b></a>
          <a class="col s3 btn red waves-effect waves-light"><b>#</b></a>
        </li>
+       <li id="dbdisplay"></li>
     </ul>
     
     
@@ -288,8 +289,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       }
       
       function displayfacts(){
-        $('#comments').html('');
-        $('#comments').append('<a class="btn green" onclick="storesel()">add fact</a>');
+        $('#dbdisplay').html('');
       var fac = db.facts;
 
         for (var t in fac){
@@ -300,10 +300,9 @@ Gandrīz aizmidzis Džeisons jautā mātei:
           }
           selector=selector.slice(0,-2)
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')">'+fac[t].comment+'</div>';
-          $('#comments').append(html);
+          $('#dbdisplay').append(html);
           
           tribute.attach(document.getElementById('fact'+t));
-          console.log($('#fac'+t));
     document.getElementById('fact'+t).addEventListener('keyup',function(kup){factupdate(t,$(this).text(),kup.code)});
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;});
