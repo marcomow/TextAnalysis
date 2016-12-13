@@ -184,9 +184,11 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
         var lastisspace=/\s+$/.test(text);        
         
         if(digiting && lastisspace){
-          var name = text.substring(text.lastIndexOf("@") + 1, text.length-1)
+          var name = text.substring(text.lastIndexOf("@") + 1, text.length-1);
+          if(db.people[name]===undefined){
           db.people[name]={
           name:name,
+          }
           }
          digiting = false;
         console.log(db.people);
