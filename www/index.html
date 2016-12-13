@@ -328,32 +328,29 @@ function factupdate(t,text,kup){
   if(digiting && kup==='Space'){
     var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
     if (lasttrigger==='@'){
-      if(db.people[name]===undefined){
-        db.people[name]={
-          key:name,
-          value:name,
-          facts:[t]
-        }
-        tribute.append(0,[db.people[name]])
-      }
-      else{db.people[name].facts.push(t)}
+      addel('people',name)
     }
     if (lasttrigger==='#'){
-      if(db.issues[name]===undefined){
-        db.issues[name]={
+      addel('issues',name)
+    }  
+    digiting = false;
+  }      
+}
+      
+      function addel(cat,name){
+            if(db[cat][name]===undefined){
+        db[cat][name]={
           key:name,
           value:name,
           facts:[t]
         }
-        tribute.append(1,[db.issues[name]])
+        tribute.append(0,[db[cat][name]])
+        Materialize.toast('added @'+name,1500)
       }
-      else{db.issues[name].facts.push(t)}
-    }  
-    digiting = false;
-    console.log(db);
-    console.log(tribute.collection);
-  }      
-}
+      else{db[cat][name].facts.push(t)}
+      
+      }
+      
       function displayer(cat,color){
         $('#dbdisplay').html('');
         $('#addfact').addClass('hide');
