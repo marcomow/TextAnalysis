@@ -334,7 +334,7 @@ function factupdate(t,text,kup){
   var lc = text.substr(text.length-1,1);
   if(lc==='@'||lc==='#'){lasttrigger=lc}
   if(digiting && kup==='Space'){
-    var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
+    var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1).split('&')[0];
       addel(lasttrigger,name,t)
     digiting = false;
   }      
