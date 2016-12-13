@@ -316,7 +316,8 @@ Gandrīz aizmidzis Džeisons jautā mātei:
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { 
-            factupdate(t,this.innerHTML,'Space'); var tr = e.detail.substr(0,1);var name = e.detail.substr(1,e.detail.length-1);
+            digiting=true; factupdate(t,this.innerHTML,'Space'); 
+            var tr = e.detail.substr(0,1);var name = e.detail.substr(1,e.detail.length-1);
             if (tr==='@'){var cat = 'people'}else if(tr==='#'){var cat = 'issues'}
            db[cat][name].facts.push(e.srcElement.id.replace('fact',''));
             Materialize.toast('updated '+tr+name,1500);
