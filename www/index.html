@@ -3,7 +3,7 @@
     <head>
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
       <link href="https://zurb.com/playground/uploads/upload/upload/430/tribute.css">
 
@@ -144,6 +144,8 @@ Gandrīz aizmidzis Džeisons jautā mātei:
         
       </div>
     
+     <a class="btn-floating btn-large waves-effect waves-light transparent button-collapse">=<i class="material-icons">menu</i></a>
+   
     
      <div id="slide-out" class="side-nav fixed" id="comments">
        <a class="btn green" onclick="storesel()">add fact</a>
@@ -197,6 +199,15 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       var down = false;
       
       function init(){
+          $('.button-collapse').sideNav({
+      menuWidth: 300, 
+      edge: 'right', 
+      closeOnClick: true, 
+      draggable: true 
+    }
+  );
+        
+        
          tribute = new Tribute({
            collection: [{
              trigger: '@',
