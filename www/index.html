@@ -184,7 +184,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       var digiting = false; var lasttrigger ='';
       
       function factupdate(t,text,kup){
-       console.log(text.slice(0,-1));
+       console.log(text.substr(text.length-1,1));
       db.facts[t]['comment']=text; 
         if(digiting && kup==='Space'){
           var name = text.substring(text.lastIndexOf("@") + 1, text.length-1);
