@@ -183,7 +183,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       db.facts[t]['comment']=text;
         var ls = text.substr(text.length - 2,1);
         var lastisspace=ls===' ';
-        console.log('check space:'+lastisspace+',digiting:'+digiting);
+        console.log('ls:'+ls+',check space:'+lastisspace+',digiting:'+digiting);
         if(digiting && lastisspace ){
           db.people[newname]={
           name:newname,
