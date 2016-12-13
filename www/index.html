@@ -184,33 +184,35 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       
       var digiting = false; var lasttrigger ='';
       
-      function factupdate(t,text,kup){
-        var lc = text.substr(text.length-1,1);
-       console.log(lc);
-        if(lc==='@'||lc==='#'){lasttrigger=lc}
-      db.facts[t]['comment']=text; 
-        if(digiting && kup==='Space'){
-          var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
-          if (lasttrigger==='@'){
-          if(db.people[name]===undefined){
-          db.people[name]={
-            key:name,
-            value:name
-          }
-          tribute.append(0,[db.people[name]])
-          }
-           if (lasttrigger==='#'){
-          if(db.issues[name]===undefined){
-          db.issues[name]={
-            key:name,
-            value:name
-          }
-          tribute.append(0,[db.issues[name]])
-          }  
-         digiting = false;
-        console.log(db);
-        }      
+function factupdate(t,text,kup){
+  var lc = text.substr(text.length-1,1);
+  console.log(lc);
+  if(lc==='@'||lc==='#'){lasttrigger=lc}
+  db.facts[t]['comment']=text; 
+  if(digiting && kup==='Space'){
+    var name = text.substring(text.lastIndexOf(lasttrigger) + 1, text.length-1);
+    if (lasttrigger==='@'){
+      if(db.people[name]===undefined){
+        db.people[name]={
+          key:name,
+          value:name
+        }
+        tribute.append(0,[db.people[name]])
       }
+    }
+    if (lasttrigger==='#'){
+      if(db.issues[name]===undefined){
+        db.issues[name]={
+          key:name,
+          value:name
+        }
+        tribute.append(0,[db.issues[name]])
+      }
+    }  
+    digiting = false;
+    console.log(db);
+  }      
+}
       
       </script> 
     </body>
