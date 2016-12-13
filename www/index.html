@@ -321,9 +321,9 @@ function factupdate(t,text,kup){
           value:name,
           facts:[t]
         }
-        else{db.people[name].facts.push(t)}
         tribute.append(0,[db.people[name]])
       }
+      else{db.people[name].facts.push(t)}
     }
     if (lasttrigger==='#'){
       if(db.issues[name]===undefined){
@@ -332,9 +332,9 @@ function factupdate(t,text,kup){
           value:name,
           facts:[t]
         }
-        else{db.issues[name].facts.push(t)}
         tribute.append(1,[db.issues[name]])
       }
+      else{db.issues[name].facts.push(t)}
     }  
     digiting = false;
     console.log(db);
