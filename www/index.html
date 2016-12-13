@@ -301,7 +301,8 @@ function factupdate(t,text,kup){
       if(db.people[name]===undefined){
         db.people[name]={
           key:name,
-          value:name
+          value:name,
+          fact:t
         }
         tribute.append(0,[db.people[name]])
       }
@@ -310,7 +311,8 @@ function factupdate(t,text,kup){
       if(db.issues[name]===undefined){
         db.issues[name]={
           key:name,
-          value:name
+          value:name,
+          fact:t
         }
         tribute.append(1,[db.issues[name]])
       }
