@@ -344,7 +344,7 @@ function factupdate(t,text,kup){
         tribute.append(0,[db[cat][name]])
         Materialize.toast('added '+lasttrigger+name,1500)
       }
-      else{db[cat][name].facts.push(t)}
+      else{db[cat][name].facts.push(t);console.log(db[cat][name].facts)}
       
       }
       
