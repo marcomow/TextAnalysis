@@ -365,8 +365,8 @@ function factupdate(t,text,kup){
           for (var g in db['facts'][fac[t]]['segments']){
           selector+='#'+g+' ,'
           }
-          selector=selector.slice(0,-2)
           }
+          selector=selector.slice(0,-2);
         var html='<div class="card '+color+' white-text" id="'+db[cat][a]['key']+'" onmouseover="$(\''+selector+'\').addClass(\''+color+' white-text\')" onmouseout="$(\''+selector+'\').removeClass(\''+color+' white-text\')">'+db[cat][a]['key']+'</div>';          
         $('#dbdisplay').append(html);
         }
