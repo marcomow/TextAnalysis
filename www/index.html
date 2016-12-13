@@ -171,21 +171,22 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="factupdate(\''+t+'\',$(this).text())">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
-          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(tribute.collection[0].values)});
+          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(e)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
         }
         
       }
       
-      var digiting = false;var newname ='';
+      var digiting = false;
       
       function factupdate(t,text){
       db.facts[t]['comment']=text;
-        var lastisspace=/\s+$/.test(text);
-        console.log('check space:'+lastisspace+',digiting:'+digiting);
+        var lastisspace=/\s+$/.test(text);        
+        
         if(digiting && lastisspace ){
-          db.people[newname]={
-          name:newname,
+          var name = text.substring(text.lastIndexOf("@") + 1, text.length)
+          db.people[name]={
+          name:name,
           }
          digiting = false
         console.log(db.people);
