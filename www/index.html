@@ -292,7 +292,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       
 function factupdate(t,text,kup){
   var lc = text.substr(text.length-1,1);
-  console.log(lc);
+  console.log(t);
   if(lc==='@'||lc==='#'){lasttrigger=lc}
   db.facts[t]['comment']=text; 
   if(digiting && kup==='Space'){
@@ -302,8 +302,9 @@ function factupdate(t,text,kup){
         db.people[name]={
           key:name,
           value:name,
-          fact:t
+          facts:[t]
         }
+        else{db.people[name].facts.push(t)}
         tribute.append(0,[db.people[name]])
       }
     }
@@ -312,8 +313,9 @@ function factupdate(t,text,kup){
         db.issues[name]={
           key:name,
           value:name,
-          fact:t
+          facts:[t]
         }
+        else{db.issues[name].facts.push(t)}
         tribute.append(1,[db.issues[name]])
       }
     }  
