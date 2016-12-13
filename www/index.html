@@ -171,17 +171,25 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="factupdate(\''+t+'\',$(this).text())">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
-          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
+          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) { 
+            digiting=true;newname=e.srcElement.innerText;console.log(newname)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
         }
         
       }
       
-      digiting = true;
+      var digiting = false;var newname ='';
       
       function factupdate(t,text){
-      db.facts[t]['comment']=text
-      
+      db.facts[t]['comment']=text;
+        console.log(text.substring(text.length - 2,1));
+        if(digiting && text.substring(text.length - 2,1)===' ' ){
+          db.people[newname]={
+          name=newname;
+          }
+         digiting = false
+        console.log(db.people);
+        }      
       }
       
       </script> 
