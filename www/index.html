@@ -362,6 +362,7 @@ function factupdate(t,text,kup){
           var fac = db[cat][a]['facts'];
           var selector='';
           for (var t in fac){
+            console.log(fac[t]);
           for (var g in db['facts'][fac[t]]['segments']){
           selector+='#'+g+' ,'
           }
