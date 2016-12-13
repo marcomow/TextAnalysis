@@ -329,7 +329,6 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       var digiting = false; var lasttrigger ='';
       
 function factupdate(t,text,kup){
-console.log(text);
     db.facts[t]['comment']=text; 
   
   var lc = text.substr(text.length-1,1);
@@ -344,6 +343,7 @@ console.log(text);
       function addel(lasttrigger,name,t){
         var cat ='';var coll =0;
         if (lasttrigger==='@'){cat='people';}else if (lasttrigger==='#'){cat='issues';coll=1}
+        if(db[cat][name]===undefined){
         db[cat][name]={
           key:name,
           value:name,
@@ -351,6 +351,7 @@ console.log(text);
         }
         tribute.append(coll,[db[cat][name]])
         Materialize.toast('added '+lasttrigger+name,1500)
+        }
       }
       
       function displayer(cat,color){
