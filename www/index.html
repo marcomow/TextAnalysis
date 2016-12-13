@@ -329,7 +329,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
       var digiting = false; var lasttrigger ='';
       
 function factupdate(t,text,kup){
-    db.facts[t]['comment']=text; 
+    db.facts[t.toString()]['comment']=text; 
   
   var lc = text.substr(text.length-1,1);
   if(lc==='@'||lc==='#'){lasttrigger=lc}
