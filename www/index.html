@@ -235,7 +235,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
         .replace(/\./g,'.</span><span>')
         .replace(/,/g,',</span><span>')
         .replace(/:/g,':</span><span>')
-      // .replace(/\n/g,'\n</span><span>')
+       .replace(/\n/g,'\n')
         .replace(/;/g,';</span><span>')
         .replace(/!/g,'!</span><span>')
         .replace(/\?/g,'?</span><span>')
@@ -294,7 +294,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
           selector=selector.slice(0,-2)
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')">'+fac[t].comment+'</div>';
           $('#comments').append(html);
-                    
+          
           tribute.attach(document.getElementById('fact'+t));
           console.log($('#fac'+t));
     document.getElementById('fact'+t).addEventListener('keyup',function(kup){factupdate(t,$(this).text(),kup.code)});
