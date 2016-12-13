@@ -312,7 +312,7 @@ Gandrīz aizmidzis Džeisons jautā mātei:
           $('#dbdisplay').append(html);
           
           tribute.attach(document.getElementById('fact'+t));
-    document.getElementById('fact'+t).addEventListener('keyup',function(kup){console.log(kup);setTimeout(function(){factupdate(t,this.innerHTML,kup.code),100})});
+    document.getElementById('fact'+t).addEventListener('keyup',function(kup){factupdate(t,this.innerHTML,kup.code) });
           
           document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { 
