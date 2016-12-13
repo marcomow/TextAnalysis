@@ -334,15 +334,15 @@ function factupdate(t,text,kup){
 }
       
       function addel(lasttrigger,name,t){
-        var cat ='';
-        if (lasttrigger==='@'){cat='people'}else if (lasttrigger==='#'){cat='issues'}
+        var cat ='';var coll =0;
+        if (lasttrigger==='@'){cat='people';}else if (lasttrigger==='#'){cat='issues';coll=1}
             if(db[cat][name]===undefined){
         db[cat][name]={
           key:name,
           value:name,
           facts:[t]
         }
-        tribute.append(0,[db[cat][name]])
+        tribute.append(coll,[db[cat][name]])
         Materialize.toast('added '+lasttrigger+name,1500)
       }
       else{db[cat][name].facts.push(t);console.log(db[cat][name].facts)}
