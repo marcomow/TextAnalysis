@@ -171,7 +171,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="factupdate(\''+t+'\',$(this).text())">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
-          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(e)});
+          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {digiting=true;console.log(tribute)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
         }
         
@@ -183,12 +183,12 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       db.facts[t]['comment']=text;
         var lastisspace=/\s+$/.test(text);        
         
-        if(digiting && lastisspace ){
-          var name = text.substring(text.lastIndexOf("@") + 1, text.length)
+        if(digiting && lastisspace){
+          var name = text.substring(text.lastIndexOf("@") + 1, text.length-1)
           db.people[name]={
           name:name,
           }
-         digiting = false
+         digiting = false;
         console.log(db.people);
         }      
       }
