@@ -133,16 +133,13 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
       }
       
       function hl(dis){
-        console.log(dis);
         dis.toggleClass('hl');
         var id = dis.attr('id');
         if(thisfact['segments'][id]===undefined){thisfact['segments'][id]=dis.text()}
         else{delete thisfact['segments'][id]}
-        console.log(thisfact)
       }
       
       function storesel(){
-        console.log(Object.keys(thisfact['segments']).length);
         if(Object.keys(thisfact['segments']).length>0){
       db['facts'][factnum]=thisfact;
       factnum++;
@@ -174,7 +171,7 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
         html+='<div class="card green lighten-2" id="fact'+t+'" onmouseover="$(\''+selector+'\').addClass(\'green\')" onmouseout="$(\''+selector+'\').removeClass(\'green\')" onload="$(this).focus()" onkeyup="db.facts[\''+t+'\'][\'comment\']=$(this).text()">'+fac[t].comment+'</div>';
           $('#comments').append(html);
           tribute.attach(document.getElementById('fact'+t));
-          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);});
+          document.getElementById('fact'+t).addEventListener('tribute-no-match', function (e) {  console.log(e);console.log(tribute)});
           document.getElementById('fact'+t).addEventListener('tribute-replaced', function (e) { console.log(e);});
         }
         
