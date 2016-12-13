@@ -187,8 +187,10 @@ Vivamus in bibendum lorem. Nullam eget facilisis arcu. Sed egestas, tellus in po
           var name = text.substring(text.lastIndexOf("@") + 1, text.length-1);
           if(db.people[name]===undefined){
           db.people[name]={
-          name:name,
+            key:name,
+            value:name
           }
+          tribute.append(0,[db.people[name]])
           }
          digiting = false;
         console.log(db.people);
