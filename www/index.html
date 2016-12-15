@@ -75,20 +75,18 @@
       $(document).ready(function(){
         $('#status').prepend('document ready<br>');
        if(pg===true){
-         $('#status').prepend('phonegap<br>');
-         $('.button-collapse').sideNav({
-           menuWidth: 300, 
-           edge: 'right', 
-           closeOnClick: false, 
-           draggable: true 
-         }
-  );
-        
+         $('#status').prepend('phonegap<br>');        
          $(document).on('deviceready', onDeviceReady);
        }
         else{
         $('#status').prepend('not phonegap<br>');
         }
+        $('.button-collapse').sideNav({
+           menuWidth: 300, 
+           edge: 'right', 
+           closeOnClick: false, 
+           draggable: true 
+         }  );
       });
       
       function onDeviceReady() {    
