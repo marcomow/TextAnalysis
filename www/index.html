@@ -222,7 +222,7 @@
       var tempdb = db;
       
       function onFileInitialize(model) {
-        model.getRoot().set('map', model.createMap(tempdb));
+        model.getRoot().set('map', model.createMap('db',tempdb));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
