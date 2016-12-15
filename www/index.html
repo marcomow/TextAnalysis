@@ -225,7 +225,7 @@
       }
       
       function onFileInitialize(model) {
-        model.getRoot().set('tempjson', model.createMap('db',db));
+        model.getRoot().set('db', model.createMap(db));
       }
       
       function onFileLoaded(doc) {
