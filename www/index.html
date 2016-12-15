@@ -104,15 +104,7 @@
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
       } 
-      
-      var db = {
-        text:[],
-        settings:{},
-        facts:{},
-        people:{},
-        issues:{}
-      }
-      
+            
       var factnum = 0;
       
       var thisfact = {
@@ -218,9 +210,17 @@
         console.log(id);
       }
       
+      var db = {
+        text:[],
+        settings:{},
+        facts:{},
+        people:{},
+        issues:{}
+      }
+      var tempdb = db;
       
       function onFileInitialize(model) {
-        model.getRoot().set('db', model.createMap(db));
+        model.getRoot().set('db', model.createMap(tempdb));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
@@ -230,7 +230,6 @@
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('db');
         db = map.get('db');
-        console.log(db.text);
         if(db.text.length>0){init()}
       }
       
