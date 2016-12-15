@@ -222,7 +222,7 @@
       var tempdb = db;
       
       function onFileInitialize(model) {
-        model.getRoot().set('db', model.createMap(tempdb));
+        model.getRoot().set('map', model.createMap(tempdb));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
@@ -230,7 +230,7 @@
       var map;
       
       function onFileLoaded(doc) {
-       map = doc.getModel().getRoot().get('db');console.log(map);
+       map = doc.getModel().getRoot().get('map');console.log(map);
         db = map.get('db');console.log(db);
         if(db.text.length>0){init()}
       }
