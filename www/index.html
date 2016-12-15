@@ -237,7 +237,7 @@
         if(db.text.length>0){init()}
       }
       
-      function upd(){ map.set('db',db)}
+      function upd(){localStorage.setItem('db',db); map.set('db',db)}
       
       function prep(){
               var html = '<span>'
