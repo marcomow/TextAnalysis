@@ -31,8 +31,9 @@
   <body class="white">
     <div class="container">
       <div id="status" class="hide"></div>
-      <div class="starter"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
-      <div class="input-field starter">
+      <a class="authorize btn green large row" onclick="authorize()">AUTHORIZE</a>
+      <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
+      <div class="input-field starter hide">
           <textarea id="textarea" class="materialize-textarea"></textarea>
           <label for="textarea">Insert Text Here</label>
         </div>
@@ -47,7 +48,7 @@
    
     
      <ul id="slide-out" class="side-nav fixed">
-       <li class="starter"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></li>
+       <li class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></li>
        <li class="row operating">
          <a class="col s4 btn green waves-effect waves-light" onclick="storesel()" id="addfact">add fact</a>
          <a class="col s3 btn green waves-effect waves-light hide" id="factbtn" onclick="displayfacts()"><b>F</b></a>
@@ -88,8 +89,8 @@
            draggable: true 
          }  );
         $('.operating').addClass('hide');
-      });
-      
+        authorize();
+      });     
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
       } 
@@ -110,9 +111,35 @@
         comment:''
       };
       
-      
-      
       var down = false;
+      
+      var clientId = '536430781292-d8pn18rcs6666v8vcnkttmgfurnmgqof.apps.googleusercontent.com';
+      var realtimeUtils = new utils.RealtimeUtils({ clientId: clientId });
+      
+      function authorize() {
+        realtimeUtils.authorize(function(response){
+          if(response.error){
+              realtimeUtils.authorize(function(response){start();}, true);
+          } else {
+              start();
+          }
+        }, false);
+      }
+      
+      function start() {
+        var id = realtimeUtils.getParam('id');
+        if (id || localStorage.getItem("fileid") === null) {
+          realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
+        } else {
+          realtimeUtils.createRealtimeFile('NEW.textan', function(createResponse) {
+            window.history.pushState(null, null, '?id=' + createResponse.id);
+            localStorage.setItem("fileid",createResponse.id)
+            realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
+          });
+        }
+        console.log(id);
+      }
+      
       
       function init(){
         
