@@ -31,7 +31,8 @@
   <body class="white">
     <div class="container">
       <div id="status" class="hide"></div>
-      <div class="input-field">
+      <div class="starter"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
+      <div class="input-field starter">
           <textarea id="textarea" class="materialize-textarea"></textarea>
           <label for="textarea">Insert Text Here</label>
         </div>
@@ -39,14 +40,15 @@
         
         </div>
       </div>
-    <div id="quickbuttons" style="position:fixed;top:5px;right:5px" >
+    <div id="quickbuttons" class="operating" style="position:fixed;top:5px;right:5px" >
      <div class="btn-floating waves-effect waves-light transparent button-collapse" data-activates="slide-out" ><i class="material-icons black-text">menu</i></div>
       <div class="btn-floating waves-effect waves-light green button-collapse" data-activates="slide-out"><i class="material-icons white-text" onclick="storesel()">add</i></div>
     </div>
    
     
      <ul id="slide-out" class="side-nav fixed">
-       <li class="row">
+       <li class="starter"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></li>
+       <li class="row operating">
          <a class="col s4 btn green waves-effect waves-light" onclick="storesel()" id="addfact">add fact</a>
          <a class="col s3 btn green waves-effect waves-light hide" id="factbtn" onclick="displayfacts()"><b>F</b></a>
          <a class="col s3 btn blue waves-effect waves-light" onclick="displayer('people','blue')"><b>@</b></a>
@@ -84,7 +86,6 @@
       
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
-        init()
       } 
       
       var db = {
@@ -140,7 +141,7 @@
          });          
         
         var html = '<span>'
-        +$('#text').text()
+        +db.text
         .replace(/\./g,'.</span><span>')
         .replace(/,/g,',</span><span>')
         .replace(/:/g,':</span><span>')
@@ -154,7 +155,7 @@
         
         db.text=html;
         
-        $('#textarea').addClass('hide');
+        $('#starter').addClass('hide');
         $('#text').html(db.text);
         
         $(document).mousedown(function(){down=true});
