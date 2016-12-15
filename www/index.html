@@ -231,8 +231,8 @@
       
       function onFileLoaded(thisdoc) {
        map = thisdoc.getModel().getRoot().get('map');
-        db = JSON.parse(map.get('db').toString);
-        if(db===null){localStorage.setItem('db',db); map.set('db',db); JSON.parse(map.get('db').toString)}
+        try{db = JSON.parse(map.get('db').toString);}
+        catch(eeerr){localStorage.setItem('db',db); map.set('db',db); JSON.parse(map.get('db').toString)}
         else if(db.text.length>0&&!newfile){init()}
       }
       
