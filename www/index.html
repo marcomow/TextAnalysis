@@ -33,8 +33,8 @@
     <div class="container">
       <div id="status" class="hide"></div>
       <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
-      <div class="row">
-        <a class="btn orange" onclick="start()">OPEN</a>
+      <div class="row fileload">
+        <a class="btn orange" onclick="onApiLoad()">OPEN</a>
         <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
       <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
@@ -119,6 +119,7 @@
       
       var clientId = '536430781292-d8pn18rcs6666v8vcnkttmgfurnmgqof.apps.googleusercontent.com';
       var realtimeUtils = new utils.RealtimeUtils({ clientId: clientId });
+      var pickerkey = 'AIzaSyDbtx4oEkokZXUdgxTqyN9DkskbsM7Ld-Y';
       
       function authorize() {
         realtimeUtils.authorize(function(response){
@@ -130,6 +131,72 @@
           }
         }, false);
       }
+      
+      
+      var scope = ['https://www.googleapis.com/auth/photos'];
+
+      var pickerApiLoaded = false;
+      var oauthToken;
+
+      function onApiLoad() {
+        gapi.load('auth', {'callback': onAuthApiLoad});
+        gapi.load('picker', {'callback': onPickerApiLoad});
+      }
+
+      function onAuthApiLoad() {
+        window.gapi.auth.authorize(
+            {
+              'client_id': clientId,
+              'scope': scope,
+              'immediate': false
+            },
+            handleAuthResult);
+      }
+
+      function onPickerApiLoad() {
+        pickerApiLoaded = true;
+        createPicker();
+      }
+
+      function handleAuthResult(authResult) {
+        if (authResult && !authResult.error) {
+          oauthToken = authResult.access_token;
+          createPicker();
+        }
+      }
+
+      function createPicker() {
+        if (pickerApiLoaded && oauthToken) {
+          var picker = new google.picker.PickerBuilder().
+              addView(google.picker.ViewId.PHOTOS).
+              setOAuthToken(oauthToken).
+              setDeveloperKey(developerKey).
+              setCallback(pickerCallback).
+              build();
+          picker.setVisible(true);
+        }
+      }
+
+      function pickerCallback(data) {
+        var url = 'nothing';
+        if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+          var doc = data[google.picker.Response.DOCUMENTS][0];
+          url = doc[google.picker.Document.URL];
+        }
+        var message = 'You picked: ' + url;
+        console.log(message)
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       function start() {
         var id = realtimeUtils.getParam('id');
