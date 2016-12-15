@@ -130,7 +130,7 @@
       
       function start() {
         var id = realtimeUtils.getParam('id');
-        if (id || localStorage.getItem("fileid") === null) {
+        if (id || localStorage.getItem("fileid") != null) {
           realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
         } else {
         
