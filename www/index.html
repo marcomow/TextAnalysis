@@ -30,7 +30,7 @@
       </style>
   </head>
   <body class="white">
-    <div class="container">
+    <header>
       <div id="status" class="hide"></div>
       <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
       <div class="row fileload hide">
@@ -38,6 +38,9 @@
         <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
       <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
+      </header>
+      <main>
+            <div class="container">
       <div class="input-field starter hide">
           <textarea id="textarea" class="materialize-textarea"></textarea>
           <label for="textarea">Insert Text Here</label>
@@ -46,6 +49,8 @@
         
         </div>
       </div>
+    </main>
+    <footer></footer>
     <div id="quickbuttons" class="operating" style="position:fixed;top:5px;right:5px" >
      <div class="btn-floating waves-effect waves-light transparent button-collapse" data-activates="slide-out" ><i class="material-icons black-text">menu</i></div>
       <div class="btn-floating waves-effect waves-light green button-collapse" data-activates="slide-out"><i class="material-icons white-text" onclick="storesel()">add</i></div>
