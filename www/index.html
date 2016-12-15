@@ -231,12 +231,12 @@
       
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('map');
-        db = map.get('db');console.log(db);
-        if(db===null){localStorage.setItem('db',tempdb); map.set('db',tempdb);db = map.get('db');}
+        db = map.get('db');
+        if(db===null){localStorage.setItem('db',tempdb); map.set('db',tempdb);db = map.get('db');console.log(db);}
         else if(db.text.length>0){init()}
       }
       
-      function upd(){localStorage.setItem('db',db); map.set('db',db)}
+      function upd(){console.log(db);localStorage.setItem('db',db); map.set('db',db)}
       
       function prep(){
         db.text=$('#textarea').val();
