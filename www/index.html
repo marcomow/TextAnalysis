@@ -37,7 +37,7 @@
         <a class="btn orange" onclick="onApiLoad()">OPEN</a>
         <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
-      <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
+      <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();prep()">prepare text</a></div>
       </header>
       <main>
             <div class="container">
@@ -58,7 +58,7 @@
    
     
      <ul id="slide-out" class="side-nav fixed">
-       <li class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></li>
+       <li class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();prep()">prepare text</a></li>
        <li class="row operating">
          <a class="col s4 btn green waves-effect waves-light" onclick="storesel()" id="addfact">add fact</a>
          <a class="col s3 btn green waves-effect waves-light hide" id="factbtn" onclick="displayfacts()"><b>F</b></a>
@@ -137,8 +137,6 @@
         }, false);
       }
       
-      
-      var scope = ['https://www.googleapis.com/auth/photos'];
 
       var pickerApiLoaded = false;
       var oauthToken;
@@ -191,7 +189,7 @@
         var url = 'nothing';
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var doc = data[google.picker.Response.DOCUMENTS][0];
-          url = doc[google.picker.Document.URL];
+          url = doc[google.picker.Document.ID];
         }
         var message = 'You picked: ' + url;
         console.log(message)
@@ -208,13 +206,11 @@
       
       
       
-      function start() {
-        var id = realtimeUtils.getParam('id');
-        if ((id || localStorage.getItem("fileid") != null)&&!newfile) {
-          realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
+      function start(id) {
+        if (id !=undefined || localStorage.getItem("fileid") != null) {
+          realtimeUtils.load(id, onFileLoaded, onFileInitialize);
         } else {
-        
-          realtimeUtils.createRealtimeFile('NEW.textan', function(createResponse) {
+          realtimeUtils.createRealtimeFile(prompt('new file name')+'.textan', function(createResponse) {
             window.history.pushState(null, null, '?id=' + createResponse.id);
             localStorage.setItem("fileid",createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
@@ -233,8 +229,27 @@
       
       function onFileLoaded(doc) {
        db = doc.getModel().getRoot().get('db');
+        console.log(db.text.length);
+        if(db.text.length>0){init()}
       }
       
+      function prep(){
+              var html = '<span>'
+        +db.text
+        .replace(/\./g,'.</span><span>')
+        .replace(/,/g,',</span><span>')
+        .replace(/:/g,':</span><span>')
+       .replace(/\n/g,'<br>')
+        .replace(/;/g,';</span><span>')
+        .replace(/!/g,'!</span><span>')
+        .replace(/\?/g,'?</span><span>')
+        .replace(/'/g,"'</span><span>")
+       .replace(/"/g,'"</span><span>')
+        +'</span>';
+        
+        db.text=html;
+        init();
+      }
       
       function init(){
         
@@ -258,22 +273,7 @@
              allowSpaces: false
            }
                        ]
-         });          
-        
-        var html = '<span>'
-        +db.text
-        .replace(/\./g,'.</span><span>')
-        .replace(/,/g,',</span><span>')
-        .replace(/:/g,':</span><span>')
-       .replace(/\n/g,'<br>')
-        .replace(/;/g,';</span><span>')
-        .replace(/!/g,'!</span><span>')
-        .replace(/\?/g,'?</span><span>')
-        .replace(/'/g,"'</span><span>")
-       .replace(/"/g,'"</span><span>')
-        +'</span>';
-        
-        db.text=html;
+         });   
         
         $('.starter').addClass('hide');
         $('#text').html(db.text);
