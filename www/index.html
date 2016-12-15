@@ -228,8 +228,8 @@
       
       var map;
       
-      function onFileLoaded(doc) {
-       map = doc.getModel().getRoot().get('map');console.log(map.keys());
+      function onFileLoaded(thisdoc) {
+       map = thisdoc.getModel().getRoot().get('map');console.log(map.keys());
         if(map.get('db')===null){localStorage.setItem('db',db); map.set('db',db);db = map.get('db');}
         else if(db.text.length>0){init()}
       }
