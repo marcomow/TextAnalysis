@@ -222,7 +222,7 @@
       var tempdb = db;
       
       function onFileInitialize(model) {
-        model.getRoot().set('map', model.createMap());
+        model.getRoot().set('map', model.createMap(db));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
@@ -231,7 +231,7 @@
       
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('map');
-        if(map.get('db')===null){localStorage.setItem('db',tempdb); map.set('db',tempdb);db = map.get('db');console.log(db);}
+        if(map.get('db')===null){localStorage.setItem('db',tempdb); map.set('db',tempdb);db = map.get('db');}
         else if(db.text.length>0){init()}
       }
       
@@ -253,7 +253,6 @@
         +'</span>';
        
         db.text=html;
-        console.log(db);
         upd();
         init();
       }
