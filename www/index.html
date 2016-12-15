@@ -143,33 +143,15 @@
       var oauthToken;
 
       function onApiLoad() {
-        console.log('clicked');
         if(!pickerApiLoaded){
-        gapi.load('auth', {'callback': onAuthApiLoad});
         gapi.load('picker', {'callback': onPickerApiLoad});
         }
         else{picktan()}
       }
 
-      function onAuthApiLoad() {
-        window.gapi.auth.authorize(
-            {
-              'client_id': clientId,
-              'scope': scope,
-              'immediate': false
-            },
-            handleAuthResult);
-      }
-
       function onPickerApiLoad() {
         pickerApiLoaded = true;
-      }
-
-      function handleAuthResult(authResult) {
-        if (authResult && !authResult.error) {
-          oauthToken = authResult.access_token;
-        picktan();
-        }
+        picktan()
       }
 
       function picktan() {
