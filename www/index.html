@@ -205,15 +205,18 @@
       
       function start(id) {
         if (id !=undefined) {
+          console.log(id);
           realtimeUtils.load(id, onFileLoaded, onFileInitialize);
+          
         } else {
           realtimeUtils.createRealtimeFile(prompt('new file name')+'.textan', function(createResponse) {
             localStorage.setItem("fileid",createResponse.id);
+                    console.log(createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
           });
           
         }
-        console.log(id);
+
       }
 
       var tempdb = db;
