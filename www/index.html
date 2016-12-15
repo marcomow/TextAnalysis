@@ -225,14 +225,11 @@
       }
       
       function onFileInitialize(model) {
-        var string = model.createString();
-        string.setText('Welcome to the Quickstart App!');
-        model.getRoot().set('demo_string', string);
+        model.getRoot().set('tempjson', model.createJsObject('db'););
       }
       
       function onFileLoaded(doc) {
-        var collaborativeString = doc.getModel().getRoot().get('demo_string');
-        wireTextBoxes(collaborativeString);
+        var collaborativeString = doc.getModel().getRoot().get('tempjson');
       }
       
       
