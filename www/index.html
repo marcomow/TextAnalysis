@@ -225,11 +225,11 @@
       }
       
       function onFileInitialize(model) {
-        model.getRoot().set('tempjson', model.create('json',db));
+        model.getRoot().set('tempjson', model.createMap('db',db));
       }
       
       function onFileLoaded(doc) {
-        var collaborativeString = doc.getModel().getRoot().get('tempjson');
+        var collaborativeString = doc.getModel().getRoot().get('db');
       }
       
       
