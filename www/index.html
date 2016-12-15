@@ -35,7 +35,7 @@
       <a id="authorize" class="btn green btn-large row disabled" onclick="authorize()">AUTHORIZE</a>
       <div class="row fileload hide">
         <a class="btn orange" onclick="onApiLoad()">OPEN</a>
-        <a class="btn orange" onclick="start()">NEW</a>	
+        <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
       <div class="starter hide"><a class="btn purple" onclick="prep()">prepare text</a></div>
       </header>
@@ -233,7 +233,7 @@
        map = thisdoc.getModel().getRoot().get('map');
         db = map.get('db');
         if(db===null){localStorage.setItem('db',db); map.set('db',db);}
-        else if(db.text.length>0){init()}
+        else if(db.text.length>0&&!newfile){init()}
       }
       
       function upd(){console.log(db);localStorage.setItem('db',db); map.set('db',db)}
