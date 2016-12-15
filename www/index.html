@@ -221,7 +221,7 @@
 
       
       function onFileInitialize(model) {
-         model.getRoot().set('map', model.createMap({'0000':{'one':'Text...','two':'Translation...'}}));
+         model.getRoot().set('map', model.createMap('db',db));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
