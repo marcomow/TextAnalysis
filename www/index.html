@@ -232,8 +232,8 @@
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('map');
         db = map.get('db');
-        if(db===null){localStorage.setItem('db',tempdb); map.set('db',tempdb)}
-        if(db.text.length>0){init()}
+        if(db===null){localStorage.setItem('db',tempdb); map.set('db',tempdb);console.log(map.get('db'))}
+        else if(db.text.length>0){init()}
       }
       
       function upd(){localStorage.setItem('db',db); map.set('db',db)}
