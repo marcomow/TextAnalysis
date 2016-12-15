@@ -224,8 +224,11 @@
         console.log(id);
       }
       
+      
       function onFileInitialize(model) {
         model.getRoot().set('db', model.createMap(db));
+         $('.fileload').addClass('hide');
+        $('.starter').removeClass('hide');
       }
       
       function onFileLoaded(doc) {
