@@ -31,6 +31,10 @@
   <body class="white">
     <div class="container">
       <div id="status" class="hide"></div>
+      <div class="input-field">
+          <textarea id="textarea" class="materialize-textarea"></textarea>
+          <label for="textarea">Insert Text Here</label>
+        </div>
         <div id="text">
         
         </div>
@@ -84,6 +88,7 @@
       } 
       
       var db = {
+        text:[],
         settings:{},
         facts:{},
         people:{},
@@ -102,7 +107,7 @@
       
       var down = false;
       
-      function init(){
+      function textanalysis(){
           $('.button-collapse').sideNav({
       menuWidth: 300, 
       edge: 'right', 
@@ -147,7 +152,10 @@
        .replace(/"/g,'"</span><span>')
         +'</span>';
         
-        $('#text').html(html);
+        db.text=html;
+        
+        $('#textarea').addClass('hide');
+        $('#text').html(db.text);
         
         $(document).mousedown(function(){down=true});
         $(document).mouseup(function(){down=false});
