@@ -131,11 +131,13 @@
         if (id || localStorage.getItem("fileid") === null) {
           realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
         } else {
+          try{
           realtimeUtils.createRealtimeFile('NEW.textan', function(createResponse) {
             window.history.pushState(null, null, '?id=' + createResponse.id);
-            localStorage.setItem("fileid",createResponse.id)
+            localStorage.setItem("fileid",createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
           });
+          }catch(e){localStorage.removeItem("fileid");authorize()}
         }
         console.log(id);
       }
