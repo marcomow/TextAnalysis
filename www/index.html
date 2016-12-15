@@ -230,7 +230,7 @@
       var map;
       
       function onFileLoaded(doc) {
-       map = doc.getModel().getRoot().get('map');console.log(map.keys());
+       map = doc.getModel().getRoot().get('map');console.log(map.items());
         db = map.get('db');console.log(db);
         if(db.text.length>0){init()}
       }
