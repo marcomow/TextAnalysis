@@ -172,8 +172,11 @@
 
       function createPicker() {
         if (pickerApiLoaded && oauthToken) {
+          var docsView = new google.picker.DocsView()
+                     .setIncludeFolders(false)
+                     .setMimeTypes('application/vnd.google-apps.document')
           var picker = new google.picker.PickerBuilder().
-              addView(google.picker.ViewId.PHOTOS).
+              addView(docsView).
               setOAuthToken(oauthToken).
               setDeveloperKey('AIzaSyDbtx4oEkokZXUdgxTqyN9DkskbsM7Ld-Y').
               setCallback(pickerCallback).
