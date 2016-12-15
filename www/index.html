@@ -174,7 +174,7 @@
         if (pickerApiLoaded && oauthToken) {
           var docsView = new google.picker.DocsView()
                      .setIncludeFolders(false)
-                     .setMimeTypes('application/vnd.google-apps.document')
+                     .setMimeTypes('application/textan')
           var picker = new google.picker.PickerBuilder().
               addView(docsView).
               setOAuthToken(oauthToken).
