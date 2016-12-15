@@ -306,6 +306,7 @@
       function storesel(){
         if(Object.keys(thisfact['segments']).length>0){
       db['facts'][factnum]=thisfact;
+          upd();
       factnum++;
         thisfact={
           segments:{},
@@ -346,6 +347,7 @@
             var tr = e.detail.substr(0,1);var name = e.detail.substr(1,e.detail.length-1).split('&')[0];
             if (tr==='@'){var cat = 'people'}else if(tr==='#'){var cat = 'issues'}
            db[cat][name].facts.push(e.srcElement.id.replace('fact',''));
+            upd();
             Materialize.toast('updated '+tr+name,1500);
           });
         }
@@ -358,7 +360,7 @@ function factupdate(t,text,kup){
   console.log(t);
   console.log(text);
     db.facts[t.toString()]['comment']=text; 
-  
+  upd();
   var lc = text.substr(text.length-1,1);
   if(lc==='@'||lc==='#'){lasttrigger=lc}
   if(digiting && kup==='Space'){
@@ -377,6 +379,7 @@ function factupdate(t,text,kup){
           value:name,
           facts:[t]
         }
+        upd();
         tribute.append(coll,[db[cat][name]])
         Materialize.toast('added '+lasttrigger+name,1500)
         }
