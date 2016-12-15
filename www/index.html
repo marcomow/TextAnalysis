@@ -220,6 +220,7 @@
       var tempdb = db;
       
       function onFileInitialize(model) {
+        console.log(tempdb);
         model.getRoot().set('db', model.createMap(tempdb));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
