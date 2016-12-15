@@ -33,7 +33,7 @@
     <div class="container">
       <div id="status" class="hide"></div>
       <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
-      <div class="row fileload">
+      <div class="row fileload hide">
         <a class="btn orange" onclick="onApiLoad()">OPEN</a>
         <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
@@ -94,6 +94,7 @@
            draggable: true 
          }  );
         $('.operating').addClass('hide');
+        authorize();
       });     
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
