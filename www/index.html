@@ -37,7 +37,7 @@
         <a class="btn orange" onclick="onApiLoad()">OPEN</a>
         <a class="btn orange" onclick="start()">NEW</a>	
       </div>
-      <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();prep()">prepare text</a></div>
+      <div class="starter hide"><a class="btn purple" onclick="prep()">prepare text</a></div>
       </header>
       <main>
             <div class="container">
@@ -58,7 +58,7 @@
    
     
      <ul id="slide-out" class="side-nav fixed">
-       <li class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();prep()">prepare text</a></li>
+       <li class="starter hide"><a class="btn purple" onclick="prep()">prepare text</a></li>
        <li class="row operating">
          <a class="col s4 btn green waves-effect waves-light" onclick="storesel()" id="addfact">add fact</a>
          <a class="col s3 btn green waves-effect waves-light hide" id="factbtn" onclick="displayfacts()"><b>F</b></a>
@@ -239,6 +239,8 @@
       function upd(){localStorage.setItem('db',db); map.set('db',db)}
       
       function prep(){
+        db.text=$('#textarea').val();
+        console.log(db);
               var html = '<span>'
         +db.text
         .replace(/\./g,'.</span><span>')
