@@ -105,6 +105,13 @@
         $('#status').prepend('device ready<br>');
       } 
             
+      var db = {
+        text:[],
+        settings:{},
+        facts:{},
+        people:{},
+        issues:{}
+      }      
       var factnum = 0;
       
       var thisfact = {
@@ -209,14 +216,7 @@
         }
         console.log(id);
       }
-      
-      var db = {
-        text:[],
-        settings:{},
-        facts:{},
-        people:{},
-        issues:{}
-      }
+
       var tempdb = db;
       
       function onFileInitialize(model) {
