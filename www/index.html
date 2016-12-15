@@ -76,6 +76,14 @@
         $('#status').prepend('document ready<br>');
        if(pg===true){
          $('#status').prepend('phonegap<br>');
+         $('.button-collapse').sideNav({
+           menuWidth: 300, 
+           edge: 'right', 
+           closeOnClick: false, 
+           draggable: true 
+         }
+  );
+        
          $(document).on('deviceready', onDeviceReady);
        }
         else{
@@ -108,15 +116,7 @@
       
       var down = false;
       
-      function textanalysis(){
-          $('.button-collapse').sideNav({
-      menuWidth: 300, 
-      edge: 'right', 
-      closeOnClick: false, 
-      draggable: true 
-    }
-  );
-        
+      function init(){
         
          tribute = new Tribute({
            collection: [{
