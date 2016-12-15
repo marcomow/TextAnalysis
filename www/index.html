@@ -154,6 +154,7 @@
         window.gapi.auth.authorize(
             {
               'client_id': clientId,
+              'scope':'https://www.googleapis.com/auth/drive.readonly'
               'immediate': false
             },
             handleAuthResult);
