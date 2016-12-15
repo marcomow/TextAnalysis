@@ -34,7 +34,7 @@
       <div id="status" class="hide"></div>
       <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
       <div class="row fileload hide">
-        <a class="btn orange" onclick="onApiLoad()">OPEN</a>
+        <a class="btn orange" onclick="picktan()">OPEN</a>
         <a class="btn orange" onclick="newfile=true;start()">NEW</a>	
       </div>
       <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
@@ -100,6 +100,7 @@
          }  );
         $('.operating').addClass('hide');
         authorize();
+        onApiLoad();
       });     
       function onDeviceReady() {    
         $('#status').prepend('device ready<br>');
@@ -166,11 +167,10 @@
       function handleAuthResult(authResult) {
         if (authResult && !authResult.error) {
           oauthToken = authResult.access_token;
-          createPicker();
         }
       }
 
-      function createPicker() {
+      function picktan() {
         if (pickerApiLoaded && oauthToken) {
           var docsView = new google.picker.DocsView()
                      .setIncludeFolders(false)
