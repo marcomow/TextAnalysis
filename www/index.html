@@ -232,6 +232,7 @@
       
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('db');
+        db = map.get('db');
         console.log(db.text);
         if(db.text.length>0){init()}
       }
