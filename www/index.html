@@ -221,7 +221,7 @@
 
       
       function onFileInitialize(model) {
-        model.getRoot().set('map', model.createMap(db));
+        model.getRoot().set('map', model.createMap({}));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
@@ -229,7 +229,7 @@
       var map;
       
       function onFileLoaded(doc) {
-       map = doc.getModel().getRoot().get('map');
+       map = doc.getModel().getRoot().get('map');console.log(map.get('db'));
         if(map.get('db')===null){localStorage.setItem('db',db); map.set('db',db);db = map.get('db');}
         else if(db.text.length>0){init()}
       }
