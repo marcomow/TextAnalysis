@@ -236,7 +236,7 @@
         else if(db.text.length>0&&!newfile){init()}
       }
       
-      function upd(){console.log(db);localStorage.setItem('db',db); map.set('db',db)}
+      function upd(needinit){console.log(db);localStorage.setItem('db',db); map.set('db',db);if(needinit!=undefined){init()}}
       
       function prep(){
         db.text=$('#textarea').val();
@@ -255,8 +255,7 @@
        
         db.text=html;
         console.log(db);
-        upd();
-        init();
+        upd('go');
       }
       
       function init(){
