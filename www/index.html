@@ -228,11 +228,15 @@
         $('.starter').removeClass('hide');
       }
       
+      var map;
+      
       function onFileLoaded(doc) {
-       db = doc.getModel().getRoot().get('db');
-        console.log(db.text.length);
+       map = doc.getModel().getRoot().get('db');
+        console.log(db.text);
         if(db.text.length>0){init()}
       }
+      
+      function upd(){ map.set('db',db)}
       
       function prep(){
               var html = '<span>'
@@ -247,8 +251,9 @@
         .replace(/'/g,"'</span><span>")
        .replace(/"/g,'"</span><span>')
         +'</span>';
-        
+       
         db.text=html;
+        upd();
         init();
       }
       
