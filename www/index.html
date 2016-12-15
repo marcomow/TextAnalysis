@@ -4,7 +4,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+       <link rel="stylesheet" href="materializeEdit.min.css">
       <link href="https://zurb.com/playground/uploads/upload/upload/430/tribute.css">
 
         <title>Test</title>
@@ -31,7 +31,11 @@
   <body class="white">
     <div class="container">
       <div id="status" class="hide"></div>
-      <a class="authorize btn green large row" onclick="authorize()">AUTHORIZE</a>
+      <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
+      <div class="row">
+        <a class="btn orange" onclick="authorize()">AUTHORIZE</a>
+        <a class="btn orange" onclick="authorize()">AUTHORIZE</a>	
+      </div>
       <div class="starter hide"><a class="btn purple" onclick="db.text=$('#textarea').val();init()">prepare text</a></div>
       <div class="input-field starter hide">
           <textarea id="textarea" class="materialize-textarea"></textarea>
@@ -121,9 +125,8 @@
           if(response.error){
               realtimeUtils.authorize(function(response){start();}, true);
           } else {
-              try{
-              start();
-            }catch(e){console.log(e);localStorage.removeItem("fileid");}
+            $('#authorize').addClass('hide');
+            $('.fileload').removeClass('hide');
           }
         }, false);
       }
@@ -142,6 +145,17 @@
           
         }
         console.log(id);
+      }
+      
+      function onFileInitialize(model) {
+        var string = model.createString();
+        string.setText('Welcome to the Quickstart App!');
+        model.getRoot().set('demo_string', string);
+      }
+      
+      function onFileLoaded(doc) {
+        var collaborativeString = doc.getModel().getRoot().get('demo_string');
+        wireTextBoxes(collaborativeString);
       }
       
       
