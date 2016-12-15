@@ -32,7 +32,7 @@
   <body class="white">
     <header>
       <div id="status" class="hide"></div>
-      <a id="authorize" class="btn green btn-large row" onclick="authorize()">AUTHORIZE</a>
+      <a id="authorize" class="btn green btn-large row disabled" onclick="authorize()">AUTHORIZE</a>
       <div class="row fileload hide">
         <a class="btn orange" onclick="onApiLoad()">OPEN</a>
         <a class="btn orange" onclick="start()">NEW</a>	
@@ -128,6 +128,7 @@
       function authorize() {
         realtimeUtils.authorize(function(response){
           if(response.error){
+             $('#authorize').removeClass('disabled');
               realtimeUtils.authorize(function(response){start();}, true);
           } else {
             $('#authorize').addClass('hide');
