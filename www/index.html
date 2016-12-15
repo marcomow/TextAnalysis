@@ -87,6 +87,7 @@
            closeOnClick: false, 
            draggable: true 
          }  );
+        $('.operating').addClass('hide');
       });
       
       function onDeviceReady() {    
@@ -154,6 +155,7 @@
         
         $('.starter').addClass('hide');
         $('#text').html(db.text);
+         $('.operating').removeClass('hide');
         
         $(document).mousedown(function(){down=true});
         $(document).mouseup(function(){down=false});
