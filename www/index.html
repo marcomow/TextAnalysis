@@ -207,6 +207,7 @@
       
       
       function start(id) {
+        console.log(id);
         if (id !=undefined || localStorage.getItem("fileid") != null) {
           realtimeUtils.load(id, onFileLoaded, onFileInitialize);
         } else {
