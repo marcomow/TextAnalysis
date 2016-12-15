@@ -208,7 +208,6 @@
           realtimeUtils.load(id, onFileLoaded, onFileInitialize);
         } else {
           realtimeUtils.createRealtimeFile(prompt('new file name')+'.textan', function(createResponse) {
-            window.history.pushState(null, null, '?id=' + createResponse.id);
             localStorage.setItem("fileid",createResponse.id);
             realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
           });
@@ -220,7 +219,6 @@
       var tempdb = db;
       
       function onFileInitialize(model) {
-        console.log(tempdb);
         model.getRoot().set('db', model.createMap(tempdb));
          $('.fileload, #text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
@@ -230,7 +228,7 @@
       
       function onFileLoaded(doc) {
        map = doc.getModel().getRoot().get('db');
-        db = map.get('db');
+        db = map.get('db');console.log(db);
         if(db.text.length>0){init()}
       }
       
