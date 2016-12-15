@@ -239,6 +239,7 @@
       function upd(){localStorage.setItem('db',db); map.set('db',db)}
       
       function prep(){
+        console.log($('#textarea').val());
         db.text=$('#textarea').val();
         console.log(db);
               var html = '<span>'
