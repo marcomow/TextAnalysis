@@ -189,7 +189,9 @@
       function pickerCallback(data) {
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var doc = data[google.picker.Response.DOCUMENTS][0];
-         start(doc[google.picker.Document.ID]);
+          var id = doc[google.picker.Document.ID]
+          localStorage.setItem('fileid',id)
+         start(id);
         }
       }
       
