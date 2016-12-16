@@ -220,14 +220,14 @@
 
       }
 
-      
+      var tempdb = db;
       function onFileInitialize(model) {
-         model.getRoot().set('map', model.createMap({'db':db}));
+         model.getRoot().set('map', model.createMap({'db':tempdb}));
          $('#text, .operating').addClass('hide');
         $('.starter').removeClass('hide');
       }
       
-      var map;
+      var map; 
       
       function onFileLoaded(thisdoc) {
        map = thisdoc.getModel().getRoot().get('map');
