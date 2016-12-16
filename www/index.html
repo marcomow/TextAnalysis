@@ -236,7 +236,7 @@
         if(db.text.length>0&&!newfile){init()}
       }
       
-      function upd(needinit){localStorage.setItem('db',db); map.set('db',db);}
+      function upd(needinit){localStorage.setItem('db',db); map.set('db',db);if(needinit){init();}}
       
       var dummy;
       
